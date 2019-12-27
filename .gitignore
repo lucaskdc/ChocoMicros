@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+
+#Keil Objects
+*.iex
+*.axf
+*.htm
+*.lnp
+*.dep
+*.crf
+
+#Keil misc
+*.uvguix.*
+*.uvguix
+*.dbgconf
