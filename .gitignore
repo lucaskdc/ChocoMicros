@@ -38,8 +38,15 @@
 *.lnp
 *.dep
 *.crf
+*._i
+*.__i
+*._ia
+*.__ia
+*.hex
 
 #Keil misc
 *.uvguix.*
 *.uvguix
 *.dbgconf
+*.BAT
+

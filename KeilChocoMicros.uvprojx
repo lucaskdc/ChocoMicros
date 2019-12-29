@@ -52,13 +52,13 @@
           <OutputName>KeilChocoMicros</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
-          <CreateBatchFile>0</CreateBatchFile>
+          <CreateBatchFile>1</CreateBatchFile>
           <BeforeCompile>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
@@ -386,6 +386,21 @@
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\main.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Bibliotecas</GroupName>
+          <Files>
+            <File>
+              <FileName>PWM_T1CH2_A9.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\PWM_T1CH2_A9.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_T1CH2_A9.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\PWM_T1CH2_A9.h</FilePath>
             </File>
           </Files>
         </Group>
