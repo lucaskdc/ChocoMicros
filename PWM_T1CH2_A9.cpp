@@ -31,3 +31,12 @@ void PWM::setCycles(int timerClockCycles){
 void PWM::setDutyCycle(float percentagem){
 	TIM1->CCR2 = (int)(percentagem/100.0*(TIM1->ARR+1));
 }
+float PWM::getDutyCycle(void){
+	return 100.0*(float)TIM1->CCR2/(float)(TIM1->ARR+1);
+}
+void PWM::disableOutput(void){
+	TIM1->BDTR &= ~TIM_BDTR_MOE;
+}
+void PWM::enableOutput(void){
+	TIM1->BDTR |= TIM_BDTR_MOE;
+}
