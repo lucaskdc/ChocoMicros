@@ -58,7 +58,7 @@
           <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
-          <CreateBatchFile>1</CreateBatchFile>
+          <CreateBatchFile>0</CreateBatchFile>
           <BeforeCompile>
             <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
@@ -401,6 +401,16 @@
               <FileName>PWM_T1CH2_A9.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\PWM_T1CH2_A9.h</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\lcd.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>lcd.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd.h</FilePath>
             </File>
           </Files>
         </Group>

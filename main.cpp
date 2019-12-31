@@ -1,5 +1,7 @@
 #include "stm32f10x.h"
 #include "PWM_T1CH2_A9.h"
+#include "lcd.h"
+
 PWM atuador;
 int main(){
 	////////////////////////////////////////
@@ -8,6 +10,7 @@ int main(){
 	RCC->CR &= ~RCC_CR_PLLON; //desliga PLL
 	RCC->CFGR = (RCC_CFGR_PLLMULL6); //8MHz x PLL6 = 48MHz
 	RCC->CFGR |=  (RCC_CFGR_PLLSRC_HSE); //HSE (cristal) para PLL in
+	RCC->CFGR |= RCC_CFGR_PPRE1_2; //100 -> 48MHz/2 = 24MHz
 	RCC->CR 	|= RCC_CR_PLLON; //Liga PLL
 	RCC->CFGR |= RCC_CFGR_SW_PLL; //Sysclock do PLL
 	
@@ -58,11 +61,26 @@ int main(){
 	GPIOC->CRH &= ~0xF0F00000; //limpa config C13 e C15
 	GPIOC->CRH |= GPIO_CRH_MODE13_1 | GPIO_CRH_MODE13_0; //50MHz
 	GPIOC->CRH |= GPIO_CRH_MODE15_1 | GPIO_CRH_MODE15_0; //50MHz
+	GPIOB->CRL &= ~0xF;
+	GPIOB->CRL |= 0x3;
 	
+	
+	lcdConfig();
+	lcdConfig();
+	lcdWrite("OLA");
+	lcdWritePos("TESTE DE ESCRITA ALEATOOOORIO", 5,0);
 
 //	int i=0;
 	for(;;){
-			GPIOC->ODR ^= (1<<13); //teste
+			//GPIOC->ODR ^= (1<<13); //teste
+			GPIOB->BSRR = (1<<0); //teste
+			atraso40us_lcd();
+			GPIOB->BSRR = (1<<16); //teste
+			atraso40us_lcd();
+			GPIOB->ODR ^= (1<<0); //teste
+			atraso40us_lcd();
+			GPIOB->ODR ^= (1<<0); //teste
+			atraso40us_lcd();
 	}
 }
 
