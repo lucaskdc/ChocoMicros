@@ -1,6 +1,7 @@
 #include "stm32f10x.h"
 #include "PWM_T1CH2_A9.h"
 #include "lcd.h"
+#include "TECLADOMOLE.h"
 
 PWM atuador;
 int main(){
@@ -68,19 +69,15 @@ int main(){
 	lcdConfig();
 	lcdConfig();
 	lcdWrite("OLA");
-	lcdWritePos("TESTE DE ESCRITA ALEATOOOORIO", 5,0);
 
+	configura_portaB2();
 //	int i=0;
 	for(;;){
-			//GPIOC->ODR ^= (1<<13); //teste
-			GPIOB->BSRR = (1<<0); //teste
-			atraso40us_lcd();
-			GPIOB->BSRR = (1<<16); //teste
-			atraso40us_lcd();
-			GPIOB->ODR ^= (1<<0); //teste
-			atraso40us_lcd();
-			GPIOB->ODR ^= (1<<0); //teste
-			atraso40us_lcd();
+		char var = le_teclado2();
+		if(var)
+			lcdWritechar(var);
+		while((GPIOB->IDR & 0xF<<6) != 0xF<<6); //trava enquanto botao estiver pressionado
+		
 	}
 }
 

@@ -412,6 +412,16 @@
               <FileType>5</FileType>
               <FilePath>.\lcd.h</FilePath>
             </File>
+            <File>
+              <FileName>TECLADOMOLE.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\TECLADOMOLE.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>TECLADOMOLE.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\TECLADOMOLE.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
