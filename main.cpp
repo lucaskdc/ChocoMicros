@@ -2,8 +2,32 @@
 #include "PWM_T1CH2_A9.h"
 #include "lcd.h"
 #include "TECLADOMOLE.h"
+#include <string.h>
 
 PWM atuador;
+float e[2] = {0};
+float referencia = 0.50; //50%
+const float Kp=2, Kd=0.5;
+
+
+extern "C" void ADC1_2_IRQHandler(){
+	e[1] = e[0];
+	e[0] = (float)ADC1->DR/(1<<12) - referencia; //normalizado 0 a 1
+	float u = Kp*e[0] + Kd*(e[0]-e[1]);
+	atuador.setDutyCycle(u*100);
+}
+
+void float2str(char text[6], float val){
+	text[0]=(int)val%100/10+0x30;
+	text[1]=(int)val%10+0x30;
+	text[2]='.';
+	text[3]=(int)(val*10)%10+0x30;
+	text[4]=(int)(val*100)%10+0x30;
+	text[5]=0;
+}
+
+
+
 int main(){
 	////////////////////////////////////////
 	//CLOCK, CONFIGURA CLOCK
@@ -31,8 +55,10 @@ int main(){
 	RCC->CFGR |= RCC_CFGR_ADCPRE_0; //ADCPRE=01 ; 48MHz/4 = 12MHz que eh menor que 14MHz
 	ADC1->CR1 |= ADC_CR1_DISCEN; //modo descontinuo
 	ADC1->CR1 |= ADC_CR1_EOCIE; //ativa interrupção fim de conversão
+	NVIC->ISER[0] = NVIC_ISER_SETENA_18; //ativa interrupt
 	GPIOB->CRL &= ~0xF0; //analog input B1 (IN9)
 	ADC1->SQR3 = 9; //primeira conversao canal 9
+	ADC1->SMPR2 = ADC_SMPR2_SMP9; //111 -> max tempo de amostragem
 	ADC1->CR2 |= ADC_CR2_ADON;
 	ADC1->CR2 |= ADC_CR2_CAL;
 	while(ADC1->CR2 & ADC_CR2_CAL);
@@ -43,8 +69,8 @@ int main(){
 	TIM2->CCMR1 |= TIM_CCMR1_OC2M_2|TIM_CCMR1_OC2M_1; //110: PWM mode 1
 	TIM2->CCER |= TIM_CCER_CC2E; //ativa comparação
 	TIM2->PSC = 48000-1; //prescaller /48000 -> 1kHz
-	TIM2->ARR = 1000-1; //Auto-reload -> f = 1kHz/1000 = 1Hz (taxa de amostragem)
-	TIM2->CCR2 = 500;
+	TIM2->ARR = 100-1; //Auto-reload -> f = 1kHz/100 = 10Hz (taxa de amostragem)
+	TIM2->CCR2 = 50;
 	TIM2->CR1 |= TIM_CR1_CEN;
 
 	////////////////////////////////////
@@ -53,6 +79,9 @@ int main(){
 	atuador.setDutyCycle(50.5); 
 	atuador.disableOutput(); //testando funcao
 	atuador.enableOutput();
+	
+
+	
 	
 	////////////////////////////
 	//testes de GPIOs A8 é saída de clock sysclock (para fins de verificação)
@@ -72,12 +101,14 @@ int main(){
 
 	configura_portaB2();
 //	int i=0;
+	char vect[16];
 	for(;;){
 		char var = le_teclado2();
 		if(var)
 			lcdWritechar(var);
 		while((GPIOB->IDR & 0xF<<6) != 0xF<<6); //trava enquanto botao estiver pressionado
-		
+		float2str(vect, atuador.getDutyCycle());
+		lcdWritePos(vect,0,1);
 	}
 }
 

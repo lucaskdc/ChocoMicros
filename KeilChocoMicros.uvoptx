@@ -221,6 +221,10 @@
           <WinId>35905</WinId>
         </Entry>
         <Entry>
+          <Name>System Viewer\TIM2</Name>
+          <WinId>35897</WinId>
+        </Entry>
+        <Entry>
           <Name>System Viewer\TIM3</Name>
           <WinId>35901</WinId>
         </Entry>
@@ -345,7 +349,7 @@
 
   <Group>
     <GroupName>::Device</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>1</RteFlg>
