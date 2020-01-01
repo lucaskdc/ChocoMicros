@@ -29,6 +29,10 @@ void PWM::setCycles(int timerClockCycles){
 }
 
 void PWM::setDutyCycle(float percentagem){
+	if(percentagem > 100.0)
+		percentagem = 100.0;
+	if(percentagem < 0.0)
+		percentagem = 0.0;
 	TIM1->CCR2 = (int)(percentagem/100.0*(TIM1->ARR+1));
 }
 float PWM::getDutyCycle(void){
