@@ -8,38 +8,38 @@ pino de rs:     C13
 */
 
 inline void pulseEnable(void){
-	GPIOC->BSRR = (unsigned)1<<15;          // E = 1
-	for(int i=0; i<25; i++); //450ns / 48MHz = 22, 450ns tempo mínimo pulso enable
-	GPIOC->BSRR = (unsigned)1<<(15+16);     // E = 0
+	GPIOC->BSRR = 1<<15;     // E = 1
+	for(int i=0; i<50; i++); //450ns * 72MHz = 32.4, 450ns tempo mínimo pulso enable
+	GPIOC->BRR = 1<<15;      // E = 0
 }
 
 void atraso40us_lcd(void){
-	TIM3->PSC = 47;  //PRESCALER 48x
-	TIM3->ARR = 40-1; //auto reload 
+	TIM3->PSC = 72-1;  	//PRESCALER 72x
+	TIM3->ARR = 40-1; 	//auto reload 
 	TIM3->CR1 |= (1<<3); //one pulse mode
-	TIM3->CR1 |= 1<<0; //counter enable
+	TIM3->CR1 |= 1<<0; 	//counter enable
 	while((TIM3->SR & 1<<0) == 0);
 	TIM3->SR &= ~(1<<0);
 }
 
 void atraso1m65s_lcd(void){
-  TIM3->PSC = 47;  //PRESCALER 48x
+  TIM3->PSC = 72-1;  	//PRESCALER 72x
 	TIM3->ARR = 1650-1; //auto reload 
 	TIM3->CR1 |= (1<<3); //one pulse mode
-	TIM3->CR1 |= 1<<0; //counter enable
+	TIM3->CR1 |= 1<<0; 	//counter enable
 	while((TIM3->SR & 1<<0) == 0);
 	TIM3->SR &= ~(1<<0);
 } 
 void lcdComando(char data_display){
 	GPIOA->ODR = (data_display & 0xFF);
-	GPIOC->BSRR = (unsigned)1<<(13+16);  	  //RS = 0
+	GPIOC->BRR = 1<<13;  	  //RS = 0
 	pulseEnable();
 	atraso40us_lcd();
 }
 
 void lcdWritechar(char data_display){
 	GPIOA->ODR = (data_display & 0xFF);
-	GPIOC->BSRR = (unsigned)1<<13;  	      //RS = 1
+	GPIOC->BSRR = 1<<13;  	 //RS = 1
 	pulseEnable();
 	atraso40us_lcd();
 }

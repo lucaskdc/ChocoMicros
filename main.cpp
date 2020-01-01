@@ -31,6 +31,7 @@ void float2str(char text[6], float val){
 int main(){
 	////////////////////////////////////////
 	//CLOCK, CONFIGURA CLOCK
+	/* Código Comentado configurava para 48MHz, default é 72MHz (8MHz * 9)
 	RCC->CFGR = 0; //Usa clock interno
 	RCC->CR &= ~RCC_CR_PLLON; //desliga PLL
 	RCC->CFGR = (RCC_CFGR_PLLMULL6); //8MHz x PLL6 = 48MHz
@@ -38,8 +39,9 @@ int main(){
 	RCC->CFGR |= RCC_CFGR_PPRE1_2; //100 -> 48MHz/2 = 24MHz
 	RCC->CR 	|= RCC_CR_PLLON; //Liga PLL
 	RCC->CFGR |= RCC_CFGR_SW_PLL; //Sysclock do PLL
-	
-	RCC->CFGR |= RCC_CFGR_MCO_SYSCLK; //Sysclock out MCO
+	*/
+	RCC->CFGR |= RCC_CFGR_MCO_PLL; //
+	RCC->CFGR |= RCC_CFGR_MCO_SYSCLK; //PLL/2 out MCO
 	
 	//////////////////////////////////
 	//Liga Periféricos
@@ -52,7 +54,7 @@ int main(){
 	
 	///////////////////////////////////
 	//Configura ADC
-	RCC->CFGR |= RCC_CFGR_ADCPRE_0; //ADCPRE=01 ; 48MHz/4 = 12MHz que eh menor que 14MHz
+	RCC->CFGR |= RCC_CFGR_ADCPRE_1; //ADCPRE=10 ; 72MHz/6 = 12MHz que eh menor que 14MHz
 	ADC1->CR1 |= ADC_CR1_DISCEN; //modo descontinuo
 	ADC1->CR1 |= ADC_CR1_EOCIE; //ativa interrupção fim de conversão
 	NVIC->ISER[0] = NVIC_ISER_SETENA_18; //ativa interrupt
@@ -68,8 +70,8 @@ int main(){
 	//Configura Timer2 (tempo de amostragem ADC)
 	TIM2->CCMR1 |= TIM_CCMR1_OC2M_2|TIM_CCMR1_OC2M_1; //110: PWM mode 1
 	TIM2->CCER |= TIM_CCER_CC2E; //ativa comparação
-	TIM2->PSC = 48000-1; //prescaller /48000 -> 1kHz
-	TIM2->ARR = 100-1; //Auto-reload -> f = 1kHz/100 = 10Hz (taxa de amostragem)
+	TIM2->PSC = 36000-1; //prescaller /36000 -> 2kHz
+	TIM2->ARR = 200-1; //Auto-reload -> f = 2kHz/200 = 10Hz (taxa de amostragem)
 	TIM2->CCR2 = 50;
 	TIM2->CR1 |= TIM_CR1_CEN;
 

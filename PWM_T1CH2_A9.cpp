@@ -7,12 +7,12 @@ PWM::PWM(){
 	TIM1->ARR = CiclosInicial-1; //Auto-reload
 	TIM1->CCR2 = CCR2Inicial;
 	
-	GPIOA->CRH &= ~(0xF << 4); //limpa configuração A9
-	GPIOA->CRH |= (0x8 << 4); //0100 saída alternativa (Ch2 Timer1) em pushpull
+	GPIOA->CRH &= ~(0xF << 4); 	//limpa configuração A9
+	GPIOA->CRH |= (0x8 << 4); 	//0100 saída alternativa (Ch2 Timer1) em pushpull
 	GPIOA->CRH |= GPIO_CRH_MODE9_1 | GPIO_CRH_MODE9_0 ; //50MHz
 	
 	TIM1->BDTR |= TIM_BDTR_MOE; //ativa saída do timer (timer ch2 -> pino A9)
-	TIM1->CR1 |= TIM_CR1_CEN; //ativa contagem timer1
+	TIM1->CR1 |= TIM_CR1_CEN; 	//ativa contagem timer1
 }
 
 void PWM::setComp(int compara){
