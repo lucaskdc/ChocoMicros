@@ -10,6 +10,17 @@ inline int reservatorioCheio(){
 inline int reservatorioVazio(){
 	return GPIOB->IDR & (1<<13) ? 1 : 0; //se B13 HIGH, retorna 1, caso contrário 0
 }
+
+inline int statusPistao(void){ //1 ativo, 0 desativado
+	return GPIOA->ODR & (1<<10) ? 0 : 1; //retorna 1 se A10 está em LOW e 0 se está em HIGH
+}
+inline int statusEsteira(void){ //1 ligada, 0 desligada
+	return GPIOA->ODR & (1<<11) ? 0 : 1; //retorna 1 se A11 está em LOW e 0 se está em HIGH
+}
+inline int statusValvula(void){ //1 aberta, 0 fechada
+	return GPIOA->ODR & (1<<12) ? 0 : 1; //retorna 1 se A12 está em LOW e 0 se está em HIGH
+}
+
 inline void ativaPistao(void){
 	GPIOA->BRR = (1<<10); //ativa pistão com 0 em A10
 }
