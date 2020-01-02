@@ -10,6 +10,7 @@ class PWM{
 	float getDutyCycle(void); //retorna dutycycle
 	void disableOutput(void); //desativa atuador
 	void enableOutput(void); //reativa atuador
+	int getOutputEnable(void); //get output
 	PWM();
 };
 

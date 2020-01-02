@@ -11,7 +11,7 @@ PWM::PWM(){
 	GPIOA->CRH |= (0x8 << 4); 	//0100 saída alternativa (Ch2 Timer1) em pushpull
 	GPIOA->CRH |= GPIO_CRH_MODE9_1 | GPIO_CRH_MODE9_0 ; //50MHz
 	
-	TIM1->BDTR |= TIM_BDTR_MOE; //ativa saída do timer (timer ch2 -> pino A9)
+	//TIM1->BDTR |= TIM_BDTR_MOE; //ativa saída do timer (timer ch2 -> pino A9)
 	TIM1->CR1 |= TIM_CR1_CEN; 	//ativa contagem timer1
 }
 
@@ -43,4 +43,8 @@ void PWM::disableOutput(void){
 }
 void PWM::enableOutput(void){
 	TIM1->BDTR |= TIM_BDTR_MOE;
+}
+
+int PWM::getOutputEnable(void){
+	return TIM1->BDTR & TIM_BDTR_MOE ? 1 : 0; //retorna 1 se MOE ativado
 }
