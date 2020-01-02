@@ -27,7 +27,7 @@ entradas digitais
 #define RESETCOLUNA3() GPIOB->BRR = 1<<11
 
 
-void configura_portaB2(void){ 
+void configura_portaB_teclado2(void){ 
 	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN;    //port B clock enabled
 	//B9 linha 0, B8 linha 1, B7 linha 2, B6 linha3, B5 coluna 0, B4 coluna 1, B3 coluna 2, A15
 	GPIOB->CRH = (GPIOB->CRH & 0xFFFF0000) | 0x00003388; //B8 & B9 input with pull up/down, B10 e B11 push pull
