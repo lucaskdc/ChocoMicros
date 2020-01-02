@@ -1,6 +1,8 @@
 #ifndef ESTADOS_H
 #define ESTADOS_H
 
+#define CTE_ADC_TEMP 50.0
+
 void estLoginInicial(void);
 void estConfirma(void);
 void estInicializacao(void);

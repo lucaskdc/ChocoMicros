@@ -38,7 +38,7 @@ void trocaEstado(funcPointer p){
 
 extern "C" void ADC1_2_IRQHandler(){
 	e[1] = e[0];
-	e[0] = (float)ADC1->DR/(1<<12) - referencia; //normalizado 0 a 1
+	e[0] = tempAlvo - CTE_ADC_TEMP*(float)ADC1->DR/(1<<12); //normalizado 0 a 1
 	float u = Kp*e[0] + Kd*(e[0]-e[1]);
 	aquecedor.setDutyCycle(u*100);
 }
@@ -57,8 +57,8 @@ int main(){
 //	int i=0;
 	//char vect[16];
 	
-	int user = pedeUsuario();
-	pedeSenha(user);
+	//int user = pedeUsuario();
+	//pedeSenha(user);
 	produtoAtual = selecionaProduto();
 	tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5; //se produto 1, tempAlvo é 27.5, se não, 29.5
 	

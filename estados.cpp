@@ -7,7 +7,7 @@
 #include "auxiliares.h"
 #include "ComArduino.h"
 
-#define CTE_ADC_TEMP 100.0
+
 
 extern int novoEstado;
 extern int produtoConfigurado;
@@ -71,19 +71,22 @@ void estInicializacao(void){
 				temp2str(textoTemp, (float)ADC1->DR/(1<<12)*CTE_ADC_TEMP);
 				lcdWritePos(textoTemp,11,1);
 				lcdWrite("ºC");
+				tempoUltMudancaTela = tempoRTC();
 			}
-			if( e[0] > -0.05 && e[0] < 0.05 )
+			if( e[0] > -0.025 && e[0] < 0.025 &&
+0
+			){
 				clearDisplay();
 				lcdWritePos("Inic. Producao",0,0);
 				lcdWritePos("2)Abast Reserv",0,1);
 				subEstado = 2;
+			}
 		break;
 		case 2: //encher reservatório
 			if(!reservatorioCheio())
 				abreValvula();
 			else{
 				fechaValvula();
-				
 				clearDisplay();
 				lcdWritePos("Inic. Producao",0,0);
 				lcdWritePos("3)Liga Esteira",0,1);
