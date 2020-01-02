@@ -218,7 +218,7 @@ int selecionaProduto(){ //retorna 1 para ao leite, 2 para meio amargo
 	
 }
 
-int selecionaVelocidade(){
+int selecionaVelocidade(){ //retorna um int de 0 a 3 que é a velocidade da esteira
 
 	int velocidadeSelecionada = -1, sair = 0;
 	char leitura, leitura_ant;
@@ -290,7 +290,7 @@ int selecionaVelocidade(){
 	return(velocidadeSelecionada);
 }
 
-int escolheFechamento(){
+int escolheFechamento(){ //retorna um int de 1 a 3 de acordo com as opções de fechamento
 	int fechamentoSelecionado = 0, sair = 0;
 	char leitura, leitura_ant;
 	char descricao[4][25] = {"[1] esvazia" , "[2] esfria", "[3] para"};
