@@ -54,11 +54,9 @@ void lcdConfig(){
 	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;  //TIM3 clock enabled
 	
 	GPIOC->CRH &= ~0xF0F00000; //limpa conf C13 e C15
-  //GPIOC->CRH |= 0x30300000; //C13 & C15 push pull max 50MHz (C13 RS, C15 ENABLE)
-	GPIOC->CRH |= 0x30300000; //open drain
+  GPIOC->CRH |= 0x30300000; //C13 & C15 push pull max 50MHz (C13 RS, C15 ENABLE)
 	GPIOA->CRL &= ~0xFFFFFFFF; //limpa conf A0 até A7
-	//GPIOA->CRL |= 0x33333333; //LCD DATA PINS
-	GPIOA->CRL |= 0x33333333; //LCD DATA PINS open drain
+	GPIOA->CRL |= 0x33333333; //LCD DATA PINS
 	
 	lcdComando(0x38); //function set
 	lcdComando(0x38); //function set
