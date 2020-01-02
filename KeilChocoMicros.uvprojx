@@ -422,6 +422,36 @@
               <FileType>5</FileType>
               <FilePath>.\TECLADOMOLE.h</FilePath>
             </File>
+            <File>
+              <FileName>ComArduino.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\ComArduino.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ComArduino.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ComArduino.h</FilePath>
+            </File>
+            <File>
+              <FileName>config_perifericos.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\config_perifericos.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>config_perifericos.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\config_perifericos.h</FilePath>
+            </File>
+            <File>
+              <FileName>auxiliares.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\auxiliares.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>auxiliares.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\auxiliares.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
