@@ -11,5 +11,4 @@ void estTrocaProducao(void);
 void estFechamento(void);
 void estRelatorio(void);
 
-
 #endif

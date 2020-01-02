@@ -462,6 +462,16 @@
               <FileType>5</FileType>
               <FilePath>.\login_e_config.h</FilePath>
             </File>
+            <File>
+              <FileName>estados.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\estados.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>estados.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\estados.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

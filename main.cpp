@@ -55,7 +55,7 @@ int main(){
 
 	configura_portaB_teclado2();
 //	int i=0;
-	char vect[16];
+	//char vect[16];
 	
 	int user = pedeUsuario();
 	pedeSenha(user);
@@ -63,10 +63,12 @@ int main(){
 	tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5; //se produto 1, tempAlvo é 27.5, se não, 29.5
 	
 	for(;;){
-		if(novoEstado != funEstado){
-			
+		if(funNovoEstado != funEstado)
+			trocaEstado(funNovoEstado);
 		funEstado();
 		ultTecla = le_teclado2();
+		if(ultTecla == '*')
+			estEmergencia();
 	}
 }
 
