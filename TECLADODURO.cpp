@@ -18,12 +18,12 @@ void configura_portaB(void){
 }
 
 void atraso_debounce(void){ //100us
-	TIM2->PSC = 1;  //PRESCALER
-	TIM2->ARR = 7200; //auto reload 
-	TIM2->CR1 |= (1<<3); //one pulse mode
-	TIM2->CR1 |= 1<<0; //counter enable
-	while((TIM2->SR & 1<<0) == 0){};
-	TIM2->SR &= ~(1<<0);
+	TIM3->PSC = 1;  //PRESCALER
+	TIM3->ARR = 7200; //auto reload 
+	TIM3->CR1 |= (1<<3); //one pulse mode
+	TIM3->CR1 |= 1<<0; //counter enable
+	while((TIM3->SR & 1<<0) == 0){};
+	TIM3->SR &= ~(1<<0);
 }
 
 int debounce(int linha, int coluna){
