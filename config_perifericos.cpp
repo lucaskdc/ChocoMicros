@@ -30,6 +30,8 @@ void configuraClock(void){
 void configRTC(void){
 	////////////////////////////////////
 	//Configura RTC
+	RCC->APB1ENR |= RCC_APB1ENR_PWREN | RCC_APB1ENR_BKPEN;
+	PWR->CR |= PWR_CR_DBP;	
 	RCC->BDCR |= RCC_BDCR_RTCSEL_HSE; //usa clock HSE (cristal 8MHz)
 	RCC->BDCR |= RCC_BDCR_RTCEN; //ativa RTC
 	RTC->CRL |= RTC_CRL_CNF; //entra modo de conf
