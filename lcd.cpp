@@ -15,7 +15,7 @@ inline void pulseEnable(void){
 
 void atraso40us_lcd(void){
 	TIM3->PSC = 72-1;  	//PRESCALER 72x
-	TIM3->ARR = 40-1; 	//auto reload 
+	TIM3->ARR = 40-1; 	//auto reload
 	TIM3->CR1 |= (1<<3); //one pulse mode
 	TIM3->CR1 |= 1<<0; 	//counter enable
 	while((TIM3->SR & 1<<0) == 0);
@@ -67,13 +67,18 @@ void lcdConfig(){
 }
 
 void setCursor(unsigned int coluna, unsigned int linha){
-	lcdComando(0x80); //coloca o cursor na linha 0
+	/*lcdComando(0x80); //coloca o cursor na linha 0
 	int i = 0;
 	if(linha == 1) lcdComando(0xC0); //coloca o cursor na linha 1
 	while(i < coluna){      //desloca o cursor para a direita at? atingir a coluna desejada
 		lcdComando(0x14);
 		i++;
-	}
+	}*/
+	if(linha == 0)
+		lcdComando(0x80+coluna%16);
+	else
+		lcdComando(0xC0+coluna%16);
+	atraso40us_lcd(); //empirico, apenas com o atraso do comando não funciona.
 }
 
 void lcdWrite(char string1[16]){ //m?ximo 16 caracteres, tamanho da linha do display
