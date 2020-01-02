@@ -40,6 +40,10 @@ void configRTC(void){
 	RTC->CRL &= ~RTC_CRL_CNF; //configura e liga
 }
 
+int tempoRTC(void){
+	return (RTC->CNTH << 16) | (RTC->CNTL);
+}
+
 void configADC(void){
 	///////////////////////////////////
 	//Configura ADC
