@@ -1,14 +1,14 @@
 #include "stm32f10x.h"
-#include <lcd.h>
-#include <tecladoduro.h>
-#include <tecladomole.h>
+#include "lcd.h"
+//#include <tecladoduro.h>
+#include "TECLADOMOLE.h"
 #include "string.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //para usar um teclado diferente, editar as três variáveis abaixo:            //
-char teclaConfirma = 'E';																											//
-char teclaBackSpace = 'X';																										//
-char semTeclaPressionada = 'n';																								//
+char teclaConfirma = '#';																											//
+char teclaBackSpace = 'D';																										//
+char semTeclaPressionada = '\0';																								//
 ////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -48,7 +48,7 @@ int pedeUsuario(){ //só sai após receber um usuário válido, retorna 0 para lucas
 		 lcdWritePos(msg[notFirstTry], 0, 0);
 		 
 		 while(sair == 0){
-		   leitura = le_teclado();
+		   leitura = le_teclado2();
 			 //só entra um novo caractere após a ultima tecla for solta
 			 //só funciona uma tecla de cada vez
 		   if((leitura_ant == semTeclaPressionada) && (leitura != semTeclaPressionada)){
@@ -108,7 +108,7 @@ void pedeSenha(int numUser){ //senha é os primeiros 5 digitos do cartao
 		 lcdWritePos(msg[notFirstTry], 0, 0);
 		 
 		 while(sair == 0){
-		   leitura = le_teclado();
+		   leitura = le_teclado2();
 			 //só entra um novo caractere após a ultima tecla for solta
 			 //só funciona uma tecla de cada vez
 		   if((leitura_ant == semTeclaPressionada) && (leitura != semTeclaPressionada)){
@@ -166,7 +166,7 @@ int selecionaProduto(){ //retorna 1 para ao leite, 2 para meio amargo
 	lcdWritePos("pressione 1 ou 2", 0, 1);
 	
 	while(sair == 0){
-		leitura = le_teclado();
+		leitura = le_teclado2();
 		if((leitura_ant == semTeclaPressionada) && (leitura != semTeclaPressionada)){
 			if(produtoSelecionado != 0 && leitura == teclaConfirma){
 				sair = 1;
@@ -228,7 +228,7 @@ int selecionaVelocidade(){ //retorna um int de 0 a 3 que é a velocidade da estei
 	lcdWritePos("pressione 0 a 3", 0, 1);
 	
 	while(sair == 0){
-		leitura = le_teclado();
+		leitura = le_teclado2();
 		if((leitura_ant == semTeclaPressionada) && (leitura != semTeclaPressionada)){
 			if(velocidadeSelecionada != -1 && leitura == teclaConfirma){
 				sair = 1;

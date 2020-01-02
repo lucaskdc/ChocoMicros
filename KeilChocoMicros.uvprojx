@@ -452,6 +452,16 @@
               <FileType>5</FileType>
               <FilePath>.\auxiliares.h</FilePath>
             </File>
+            <File>
+              <FileName>login_e_config.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\login_e_config.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>login_e_config.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\login_e_config.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
