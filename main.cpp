@@ -7,8 +7,8 @@
 #include "auxiliares.h"
 
 PWM aquecedor;
-float e[2] = {0};
-float referencia = 0.50; //50%
+volatile float e[2] = {0};
+volatile float referencia = 0.50; //50%
 const float Kp=2, Kd=0.5;
 
 extern "C" void ADC1_2_IRQHandler(){
@@ -38,7 +38,7 @@ int main(){
 		while((GPIOB->IDR & 0xF<<6) != 0xF<<6); //trava enquanto botao estiver pressionado
 		
 		porcentagemFloat2Str(vect, aquecedor.getDutyCycle());
-		lcdWritePos(vect,0,1);
+		lcdWritePos(vect,10,1);
 	}
 }
 
