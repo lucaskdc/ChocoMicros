@@ -26,9 +26,10 @@ volatile int estadoLogin = 0;
 volatile char loginUser[7];
 volatile char loginPasswd[6];
 
-volatile int tempoAberto=0, tempoFechado=0;
-volatile int flag1min=0, tempoaberto1min=0;
+volatile int tempoAberto=0, tempoFechado=0; //Pistão 
 
+volatile int flag1min=0, tempoaberto1min=0; //Válvula
+	
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
 funcPointer funEstado = &estConfirma;
@@ -42,13 +43,13 @@ void trocaEstado(funcPointer p){
 	funEstado = p;
 	tempoUltMudancaTela = -9999;
 }
-
+/*
 extern "C" void TIM4_IRQHandler(){
 	flag1min=1;
 	abreValvula();
 	tempoAberto=tempoRTC();
 }
-
+*/
 extern "C" void ADC1_2_IRQHandler(){
 	float tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5;
 	e[1] = e[0];
@@ -74,12 +75,16 @@ int main(){
 		atraso1m65s_lcd();
 	for(;;){
 		
-		if(flag1min && (tempoRTC()> (tempoaberto1min + 400))){
+		if((tempoRTC() - tempoaberto1min) > 6000){ //abre a válvula caso passe de 1min desde a última abertura
+			flag1min=1;
+			abreValvula();
+			tempoaberto1min=tempoRTC();
+		}
+		if(flag1min && (tempoRTC() > (tempoaberto1min + 400))){
 			fechaValvula();
 			flag1min=0;
 		}
 			
-		
 		if(funNovoEstado != funEstado)
 			trocaEstado(funNovoEstado);
 		funEstado();
