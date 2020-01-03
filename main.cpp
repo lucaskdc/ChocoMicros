@@ -10,9 +10,9 @@
 
 
 PWM aquecedor;
-const float Kp=2, Kd=0.5;
+const float Kp=1.3, Kd=0.5;
 volatile float e[2] = {0};
-volatile float referencia = 0.50; //50%
+volatile float referencia = 0.52; //52%
 volatile int produtoAtual = 1;
 volatile int produtoNovo = 1;
 

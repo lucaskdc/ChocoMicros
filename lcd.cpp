@@ -57,7 +57,6 @@ void lcdConfig(){
   	GPIOC->CRH |= 0x30300000; //C13 & C15 push pull max 50MHz (C13 RS, C15 ENABLE)
 	GPIOA->CRL &= ~0xFFFFFFFF; //limpa conf A0 até A7
 	GPIOA->CRL |= 0x33333333; //LCD DATA PINS
-	GPIOA->CRH &= ~0xFFFFFFFF; //limpa conf A8 até A15
 	GPIOA->CRH = (GPIOA->CRH & 0xFFF000FF) | 0x00033300; //A10 & A11 & A12 OUTPUT PUSH PULL
 	
 	lcdComando(0x38); //function set
