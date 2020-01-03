@@ -12,16 +12,20 @@
 PWM aquecedor;
 const float Kp=2, Kd=0.5;
 volatile float e[2] = {0};
-volatile float referencia = 0.50; //50%
+volatile int unidadesProduzidas[2]={0};
 volatile int produtoAtual = 1;
 volatile int produtoNovo = 1;
 
 volatile char ultTecla = 0;
-volatile int produtoConfigurado = 1;
 volatile int tempoUltMudancaTela = 0;
 
 volatile int subEstadoAnterior = 0;
 volatile int subEstado = 0;
+volatile int estadoLogin = 0;
+volatile char loginUser[7];
+volatile char loginPasswd[6];
+
+volatile int tempoAberto, tempoFechado;
 
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
@@ -34,6 +38,7 @@ void trocaEstado(funcPointer p){
 	subEstadoAnterior = subEstado;
 	subEstado = 0;
 	funEstado = p;
+	tempoUltMudancaTela = -9999;
 }
 
 extern "C" void ADC1_2_IRQHandler(){
@@ -54,7 +59,7 @@ int main(){
 	configura_portaB_teclado2();
 	//int user = pedeUsuario();
 	//pedeSenha(user);
-	produtoAtual = selecionaProduto();
+	produtoNovo = selecionaProduto();
 	while(le_teclado2())
 		atraso1m65s_lcd();
 	for(;;){

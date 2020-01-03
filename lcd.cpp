@@ -81,7 +81,7 @@ void setCursor(unsigned int coluna, unsigned int linha){
 	atraso40us_lcd(); //empirico, apenas com o atraso do comando não funciona.
 }
 
-void lcdWrite(char string1[16]){ //m?ximo 16 caracteres, tamanho da linha do display
+void lcdWrite(const char string1[16]){ //m?ximo 16 caracteres, tamanho da linha do display
 	/*
 	unsigned int tamanho = 0, i;
 	do{ //mede o tamanho da string
@@ -94,7 +94,7 @@ void lcdWrite(char string1[16]){ //m?ximo 16 caracteres, tamanho da linha do dis
 	}
 }
 
-void lcdWritePos(char string1[16], unsigned int coluna, unsigned int linha){
+void lcdWritePos(const char string1[16], unsigned int coluna, unsigned int linha){
 	setCursor(coluna, linha);
 	for(int i = 0; i<16 && string1[i] != '\0'; i++){ //escreve enquanto index<16 e nao encontrar '\0'
 		if(coluna<16){
@@ -107,3 +107,37 @@ void lcdWritePos(char string1[16], unsigned int coluna, unsigned int linha){
 		
 	}
 }
+void lcdWriteInt(int var){
+	if(var<0){
+		lcdWritechar('-');
+		var = -var;
+	}
+	int tmp=var;
+	int inicia=0;
+
+	for(int i=8; i>=0; i--){
+		for(int j=0; j<i; j++){
+			tmp /= 10;
+			
+		}
+		if(tmp > 0)
+			inicia = 1;
+		if(inicia)
+			lcdWritechar(tmp%10+0x30);
+	}
+}
+
+void lcdWriteInt(int var, int n){
+	if(var<0){
+		lcdWritechar('-');
+		var = -var;
+	}
+	int tmp=var;
+	for(int i=n-1; i>=0; i--){
+		for(int j=0; j<i; j++){
+			tmp /= 10;
+		}
+			lcdWritechar(tmp%10+0x30);
+	}
+}
+
