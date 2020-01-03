@@ -8,7 +8,7 @@
 #include "ComArduino.h"
 #include "login_e_config.h"
 
-
+void LoginFechamento();
 extern int novoEstado;
 extern int produtoConfigurado;
 extern int produtoAtual;
@@ -20,6 +20,8 @@ extern PWM aquecedor;
 extern float e[2];
 extern float referencia;
 extern float tempAlvo;
+
+int tempoAberto, tempoFechado;
 
 typedef void (*funcPointer)(void);
 extern funcPointer funNovoEstado;
@@ -149,7 +151,9 @@ void estEmergencia(void){
 		funNovoEstado = funEstadoAnterior;
 
 }
-void estLoginFechamento(void){
+void LoginFechamento(void){
+	
+	
 	
 }
 void estTrocaProducao(void){
@@ -181,7 +185,7 @@ void estFechamento(void){
 	}else{
 		desativaPistao();
 		desligaEsteira();
-		funNovoEstado = estR;
+		funNovoEstado = &estInicializacao;
 	}
 }
 void estRelatorio(void){
