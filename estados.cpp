@@ -36,14 +36,21 @@ int loginFechamento(void);
 
 void estLoginInicial(void){
 	int user;
+	unidadesProduzidas[0] = 0;
+	unidadesProduzidas[1] = 0;
+
 	switch(subEstado){
 		case 0:
+			if(ultTecla == 0)
+				subEstado = 1;
+		break;
+		case 1:
 			user = pedeUsuario(); //trava programa
 			pedeSenha(user); //trava programa
 			produtoAtual = selecionaProduto(); //trava programa
-			subEstado = 1;
+			subEstado = 2;
 		break;
-		case 1:
+		case 2:
 			if(ultTecla == 0)
 				funNovoEstado = estConfirma;
 		break;
@@ -98,7 +105,7 @@ void estInicializacao(void){
 				lcdWriteTemp(11,1);
 				tempoUltMudancaTela = tempoRTC();
 			}
-			if( e[0] > -0.25 && e[0] < 0.25 ){
+			if( e[0] >= -0.5 && e[0] <= 0.5 ){
 				clearDisplay();
 				lcdWritePos("Inic. Producao",0,0);
 				lcdWritePos("2)Abast Reserv",0,1);
@@ -106,7 +113,7 @@ void estInicializacao(void){
 			}
 		break;
 		case 2: //encher reservatório
-			if(!reservatorioCheio())
+			if(reservatorioVazio())
 				abreValvula();
 			else{
 				fechaValvula();
@@ -180,16 +187,19 @@ void estProducao(void){
 					funNovoEstado = &estFechamento;
 				break;
 			}
+		//sem break
 		case 1:
 			if(statusPistao() && (tempoRTC() >= tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
 				unidadesProduzidas[produtoAtual-1]++; //incrementa
 				
-				if(subEstado == 1)
-					refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
+				//if(subEstado == 1)
+					//refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
 			}
-			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			if(subEstado == 1)
+					refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 				ativaPistao();
 				tempoAberto=tempoRTC();
 			}
@@ -337,16 +347,28 @@ int loginFechamento(void){
 }
 
 void estEmergencia(void){
-	int estadoPistao = statusPistao();
-	int estadoEsteira = statusEsteira();
-	desativaPistao();
-	desligaEsteira();
-	clearDisplay();
-	lcdWritePos("Parada de emergência",0,0);
-	lcdWritePos("Sair [*]",0,1);
-	if(ultTecla == '*')
-		funNovoEstado = funEstadoAnterior;
-
+	switch(subEstado){
+		case 0:
+				desativaPistao();
+				desligaEsteira();
+				clearDisplay();
+				lcdWritePos("Parada de emergência",0,0);
+				lcdWritePos("Sair [*]",0,1);
+				subEstado = 1;
+		break;
+	//int estadoPistao = statusPistao();
+	//int estadoEsteira = statusEsteira();
+		case 1:
+			if(ultTecla == 0)
+				subEstado = 2;
+		break;
+		case 2:
+			if(ultTecla == '*')
+				if(funEstadoAnterior == estProducao || funEstadoAnterior == estTrocaProducao || funEstadoAnterior == estFechamento){
+					ligaEsteira();
+					funNovoEstado = funEstadoAnterior;
+				}
+	}
 }
 void estTrocaProducao(void){
 	switch(subEstado){
@@ -355,12 +377,13 @@ void estTrocaProducao(void){
 			lcdWritePos("Trocando Producao", 0, 0);
 			lcdWritePos("ESVAZIANDO RESERV", 0, 1);
 			subEstado = 1;
+			fechaValvula();
 		case 1: //espera esvaziar 
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
 			}
-			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 			ativaPistao();
 			tempoAberto=tempoRTC();
 			}
@@ -385,12 +408,13 @@ void estFechamento(void){
 			lcdWritePos("Fechando Producao", 0, 0);
 			lcdWritePos("ESVAZIANDO RESERV", 0, 1);
 			subEstado = 1;
+			fechaValvula();
 		case 1: //espera esvaziar 
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
 			}
-			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 			ativaPistao();
 			tempoAberto=tempoRTC();
 			}

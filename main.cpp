@@ -11,7 +11,7 @@
 #include "ComArduino.h"
 
 PWM aquecedor;
-const float Kp=1.3, Kd=0.5;
+const float Kp=KPCONST, Kd=KDCONST;
 volatile float e[2] = {0};
 volatile int unidadesProduzidas[2]={0};
 volatile int produtoAtual = 1;
@@ -28,8 +28,9 @@ volatile char loginPasswd[6];
 
 volatile int tempoAberto=0, tempoFechado=0; //Pistão 
 
-volatile int flag1min=0; //, tempoaberto1min=0; //Válvula tempoaberto está no ComArduino.h
-volatile int tempoaberto1min, tempofechado1min;
+volatile int flag1min=0; //Válvula
+volatile int tempoaberto1min=0, tempofechado1min=0;
+
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
 funcPointer funEstado = &estConfirma;
@@ -51,7 +52,13 @@ extern "C" void TIM4_IRQHandler(){
 }
 */
 extern "C" void ADC1_2_IRQHandler(){
-	float tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5;
+	float tempAlvo=0;
+	if(
+			funEstado == estInicializacao || funEstado == estProducao || funEstado == estTrocaProducao || funEstado == estFechamento ||
+			(funEstado == estEmergencia && (funEstadoAnterior == estInicializacao || funEstadoAnterior == estProducao || funEstadoAnterior == estTrocaProducao || funEstadoAnterior == estFechamento))
+		){
+		tempAlvo	= ( produtoAtual == 1) ? 27.5 : 29.5;
+	}
 	e[1] = e[0];
 	e[0] = tempAlvo - CTE_ADC_TEMP*(float)ADC1->DR/(1<<12); //normalizado 0 a 1
 	float u = Kp*e[0] + Kd*(e[0]-e[1]);
@@ -68,24 +75,26 @@ int main(){
 	lcdConfig();
 	
 	funNovoEstado = estLoginInicial;
+	//funNovoEstado = &estInicializacao;
 	for(;;){
 		
-		if((tempoRTC() - tempofechado1min) >= 6000){ //abre a válvula caso passe de 1min desde a última abertura
+		
+		if(!flag1min && (tempoRTC() - tempofechado1min) >= 6000){ //abre a válvula caso passe de 1min desde a última abertura
 			flag1min=1;
 			abreValvula();
 			tempoaberto1min=tempoRTC();
 		}
-		if(flag1min && (tempoRTC() > (tempoaberto1min + 400))){
+		if(flag1min == 1 && (tempoRTC() > (tempoaberto1min + 400))){
 			fechaValvula(); //tempofechado1min atualiza na fechaValvula()
 			flag1min=0;
 		}
-			
+		
 		if(funNovoEstado != funEstado)
 			trocaEstado(funNovoEstado);
 		funEstado();
 		ultTecla = le_teclado2();
 		if(ultTecla == '*')
-			estEmergencia();
+			funNovoEstado = estEmergencia;
 	}
 }
 
