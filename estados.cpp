@@ -13,6 +13,7 @@
 extern int estadoLogin;
 extern char loginUser[7];
 extern char loginPasswd[6];
+extern int usuarioLogando;
 
 extern int novoEstado;
 extern int produtoAtual;
@@ -212,7 +213,7 @@ int loginFechamento(void){
 		case 1:
 			tamanho = strlen((const char*)loginUser);
 			if(ultTecla >= 0x30 && ultTecla <= 0x39 && tamanho<6){ //se a tecla eh um numero e o tamanho n chegou a 7=6
-				setCursor(4+tamanho,1);
+				setCursor(tamanho,1);
 				loginUser[tamanho] = ultTecla;
 				loginUser[++tamanho] = 0;				
 				lcdWritechar(ultTecla);
@@ -221,16 +222,18 @@ int loginFechamento(void){
 					estadoLogin = 0;
 					return -1;
 				}else{
-					setCursor(4+tamanho-1,1);
+					setCursor(tamanho-1,1);
 					loginUser[tamanho-1] = 0;
 					lcdWritechar(' ');
 				}
 			} else if(ultTecla == '#'){
 				usuarioOK = 0;
 				teste = 0;
-				for(int j=0; j<2 && teste == 0; j++){
-					int teste = 1;
-					for(int i=0; i<6 && teste == 1; i++){
+				int i,j;
+				
+				for(j=0; j<2 && teste == 0; j++){
+					teste = 1;
+					for(i=0; i<6 && teste == 1; i++){
 						if(loginUser[i] != operador[j][i])
 							teste = 0;
 					}
@@ -238,29 +241,48 @@ int loginFechamento(void){
 						usuarioOK = 1;
 					}
 					if(usuarioOK){
-						estadoLogin = 2;
-						usuarioOK = j;
+						estadoLogin = 20;
+						usuarioLogando = j-1;
 					} else {
 						tempoUltMudancaTela = -9999;
-						estadoLogin = -1;
+						estadoLogin = -11;
 					}
 				}
 			}
 			if(estadoLogin == 1 && ultTecla != 0)
 				estadoLogin = 11;
 		break;
-		case -1:
+		case -11:
 			clearDisplay();
 			lcdWritePos("Usuário Inválido", 0, 0);
 			tempoUltMudancaTela = tempoRTC();
-			estadoLogin = 0;
+			estadoLogin = -1;
+		break;
+		case -1:
 			if(tempoUltMudancaTela + 100 < tempoRTC())
 				estadoLogin = 0;
 		break;
+		case 22:
+			if(ultTecla == 0)
+				estadoLogin = 2;
+		break;
+		case 20:
+			if(ultTecla == 0)
+				estadoLogin = 21;
+		break;
+		case 21:
+			lcdWritePos("Digite a Senha: ", 0, 0);
+			setCursor(11,1);
+			for(int i=0; i<strlen(loginPasswd); i++){
+				lcdWritechar('*');
+			}
+			//lcdWritePos((const char*)loginUser, 4,1);
+			estadoLogin = 2;
+		break;
 		case 2:
 			tamanho = strlen((const char*)loginPasswd);
-			if(ultTecla > 0x30 && ultTecla < 0x39 && tamanho<5){ //se a tecla eh um numero e o tamanho n chegou a 7=6
-				setCursor(11+tamanho,1);
+			if(ultTecla >= 0x30 && ultTecla <= 0x39 && tamanho<5){ //se a tecla eh um numero e o tamanho n chegou a 7=6
+				setCursor(10+tamanho,1);
 				loginPasswd[tamanho] = ultTecla;
 				loginPasswd[++tamanho] = 0;				
 				lcdWritechar('*');
@@ -269,16 +291,14 @@ int loginFechamento(void){
 						tempoUltMudancaTela = -9999;
 						estadoLogin = 0;
 				}else{
-					setCursor(11+tamanho-1,1);
+					setCursor(10+tamanho-1,1);
 					loginPasswd[tamanho-1] = 0;
 					lcdWritechar(' ');
 				}
 			} else if(ultTecla == '#'){
-				teste = 0;
-				
-				int teste = 1;
+				teste = 1;
 				for(int i=0; i<5 && teste == 1; i++){
-					if(loginPasswd[i] != operador[usuarioOK][i])
+					if(loginPasswd[i] != operador[usuarioLogando][i])
 						teste = 0;
 				}
 				if(teste){
@@ -286,7 +306,11 @@ int loginFechamento(void){
 					clearDisplay();
 					lcdWritePos("1)Trocar Produto", 0,0);
 					lcdWritePos("2)Encerrar Prod", 0,1);
-				}				
+				}
+
+			}
+			if(estadoLogin == 2 && ultTecla != 0){
+				estadoLogin = 22;
 			}
 		break;
 		case 3:
@@ -321,8 +345,12 @@ void LoginFechamento(void){
 }
 void estTrocaProducao(void){
 	switch(subEstado){
-	
-		case 0: //espera esvaziar 
+		case 0:
+			clearDisplay();
+			lcdWritePos("Trocando Producao", 0, 0);
+			lcdWritePos("ESVAZIANDO RESERV", 0, 1);
+			subEstado = 1;
+		case 1: //espera esvaziar 
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
@@ -332,9 +360,9 @@ void estTrocaProducao(void){
 			tempoAberto=tempoRTC();
 			}
 			if(reservatorioVazio())
-				subEstado=1;
+				subEstado=2;
 		break;			
-		case 1:
+		case 2:
 			desligaEsteira();
 			produtoAtual = produtoNovo;
 			funNovoEstado = &estInicializacao;

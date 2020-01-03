@@ -24,6 +24,7 @@ volatile int subEstado = 0;
 volatile int estadoLogin = 0;
 volatile char loginUser[7];
 volatile char loginPasswd[6];
+volatile int usuarioLogando=0;
 
 volatile int tempoAberto=0, tempoFechado=0;
 
