@@ -26,8 +26,6 @@ extern int unidadesProduzidas[2];
 
 extern int tempoAberto, tempoFechado;
 
-int tempoAberto, tempoFechado;
-
 typedef void (*funcPointer)(void);
 extern funcPointer funNovoEstado;
 extern funcPointer funEstadoAnterior;
@@ -140,10 +138,10 @@ void estProducao(void){
 					subEstado = 1;
 				break;
 				case 1:
-					//TROCAPRODUTO
+					funNovoEstado = &estTrocaProducao;
 				break;
 				case 2:
-					//ENCERRAPRODUCAO
+					funNovoEstado = &estFechamento;
 				break;
 			}
 		case 1:
@@ -309,12 +307,27 @@ void estTrocaProducao(void){
 	}
 }
 void estFechamento(void){
-		if(!reservatorioVazio()){
-		//espera esvaziar
-	}else{
-		desativaPistao();
-		desligaEsteira();
-		funNovoEstado = estRelatorio;
+	switch(subEstado){
+	
+		case 0: //espera esvaziar 
+			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
+				desativaPistao();
+				tempoFechado=tempoRTC();
+			}
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			ativaPistao();
+			tempoAberto=tempoRTC();
+			}
+			if(reservatorioVazio())
+				subEstado=1;
+		 break;
+			
+		case 1:
+			
+			desativaPistao();
+			desligaEsteira();
+			funNovoEstado = &estRelatorio;
+		break;
 	}
 }
 void estRelatorio(void){
