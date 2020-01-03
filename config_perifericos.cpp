@@ -51,7 +51,9 @@ void configGPIOs(void){
 	//A10 pistão de saída de chocolate
 	//A11 esteira
 	//A12 válvula movimentação de chocolate
-	GPIOA->CRH = (GPIOA->CRH & 0xFFF000FF) | 0x00033300; //A10 & A11 & A12 OUTPUT push pull max 50MHz
+	GPIOA->BSRR = (7<<10); // HIGH A10, A11 e A12, esteira desligada
+	GPIOA->CRH = (GPIOA->CRH & 0xFFF000FF) | 0x00077700; //open drain A10 & A11 & A12 OUTPUT push pull max 50MHz
+	
 	
 }
 
