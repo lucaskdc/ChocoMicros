@@ -25,7 +25,7 @@
 		return GPIOB->IDR & (1<<14) ? 1 : 0; //se B14 HIGH, retorna 1, caso contrário 0
 	}
 	inline int reservatorioVazio(){
-		return GPIOB->IDR & (1<<13) ? 1 : 0; //se B13 HIGH, retorna 1, caso contrário 0
+		return GPIOB->IDR & (1<<13) ? 0 : 1; //se B13 low, retorna 1, caso contrário 0
 	}
 
 	inline int statusPistao(void){ //1 ativo, 0 desativado
