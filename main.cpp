@@ -41,6 +41,11 @@ void trocaEstado(funcPointer p){
 	tempoUltMudancaTela = -9999;
 }
 
+extern "C" void TIM4_IRQHandler(){
+	
+	
+}
+
 extern "C" void ADC1_2_IRQHandler(){
 	float tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5;
 	e[1] = e[0];
@@ -54,6 +59,7 @@ int main(){
 	configGPIOs();
 	configRTC();
 	configADC();
+	NVIC->ISER[0] = NVIC_ISER_SETENA_30; //ativa interrupt TIM4
 	aquecedor = PWM();	//inicializa PWM, aquecedor é var global
 	lcdConfig();
 	
