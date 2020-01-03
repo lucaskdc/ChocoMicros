@@ -150,7 +150,7 @@ void estProducao(void){
 			retornoLogin = loginFechamento();
 		  switch(retornoLogin){
 				case -1:
-					subEstado = 1;
+					subEstado = 0;
 				break;
 				case 1:
 					funNovoEstado = &estTrocaProducao;
@@ -160,7 +160,7 @@ void estProducao(void){
 				break;
 			}
 		case 1:
-			if(statusPistao() && (tempoRTC() >= tempoAberto + 900)){
+			if(statusPistao() && (tempoRTC() >= tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
 				unidadesProduzidas[produtoAtual-1]++; //incrementa
