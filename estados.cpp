@@ -9,6 +9,7 @@
 #include "login_e_config.h"
 #include <string.h>
 
+
 extern int estadoLogin;
 extern char loginUser[7];
 extern char loginPasswd[6];
@@ -24,6 +25,8 @@ extern float e[2];
 extern int unidadesProduzidas[2];
 
 extern int tempoAberto, tempoFechado;
+
+int tempoAberto, tempoFechado;
 
 typedef void (*funcPointer)(void);
 extern funcPointer funNovoEstado;
@@ -277,7 +280,9 @@ void estEmergencia(void){
 		funNovoEstado = funEstadoAnterior;
 
 }
-void estLoginFechamento(void){
+void LoginFechamento(void){
+	
+	
 	
 }
 void estTrocaProducao(void){

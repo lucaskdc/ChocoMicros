@@ -10,7 +10,7 @@
 
 
 PWM aquecedor;
-const float Kp=2, Kd=0.5;
+const float Kp=1.3, Kd=0.5;
 volatile float e[2] = {0};
 volatile int unidadesProduzidas[2]={0};
 volatile int produtoAtual = 1;
