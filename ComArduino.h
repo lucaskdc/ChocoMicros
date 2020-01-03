@@ -5,7 +5,8 @@
 #ifndef COM_ARDUINO_H
 #define COM_ARDUINO_H
 	#include "stm32f10x.h"
-
+	#include "config_perifericos.h" //funcao do RTC
+	
 	inline int reservatorioCheio(void);
 	inline int reservatorioVazio(void);
 	
@@ -18,7 +19,7 @@
 	inline void ligaEsteira(void);
 	inline void desligaEsteira(void);
 	inline void abreValvula(void);
-	inline void fechaValvula(void);
+	void fechaValvula(void);
 	
 	inline int reservatorioCheio(){
 		return GPIOB->IDR & (1<<14) ? 1 : 0; //se B14 HIGH, retorna 1, caso contrário 0
@@ -51,9 +52,6 @@
 	}
 	inline void abreValvula(void){
 		GPIOA->BRR = (1<<12); //abre válvula com 0 em A12
-	}
-	inline void fechaValvula(void){
-		GPIOA->BSRR = (1<<12); //fecha válvula com 1 em A12
 	}
 	
 #endif

@@ -26,7 +26,6 @@ extern char ultTecla;
 extern PWM aquecedor;
 extern float e[2];
 extern int unidadesProduzidas[2];
-
 extern int tempoAberto, tempoFechado;
 
 typedef void (*funcPointer)(void);

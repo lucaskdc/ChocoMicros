@@ -28,8 +28,8 @@ volatile char loginPasswd[6];
 
 volatile int tempoAberto=0, tempoFechado=0; //Pistão 
 
-volatile int flag1min=0, tempoaberto1min=0; //Válvula
-	
+volatile int flag1min=0; //, tempoaberto1min=0; //Válvula tempoaberto está no ComArduino.h
+volatile int tempoaberto1min, tempofechado1min;
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
 funcPointer funEstado = &estConfirma;
@@ -70,13 +70,13 @@ int main(){
 	funNovoEstado = estLoginInicial;
 	for(;;){
 		
-		if((tempoRTC() - tempoaberto1min) > 6000){ //abre a válvula caso passe de 1min desde a última abertura
+		if((tempoRTC() - tempofechado1min) >= 6000){ //abre a válvula caso passe de 1min desde a última abertura
 			flag1min=1;
 			abreValvula();
 			tempoaberto1min=tempoRTC();
 		}
 		if(flag1min && (tempoRTC() > (tempoaberto1min + 400))){
-			fechaValvula();
+			fechaValvula(); //tempofechado1min atualiza na fechaValvula()
 			flag1min=0;
 		}
 			
