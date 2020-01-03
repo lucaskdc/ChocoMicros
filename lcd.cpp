@@ -126,8 +126,15 @@ void lcdWriteInt(int var, int n){
 			lcdWritechar(tmp%10+0x30);
 	}
 }
+float serie[10];
 void lcdWriteTemp(void){
-	float val = CTE_ADC_TEMP*(float)ADC1->DR/(1<<12);
+	float val=0;
+	for(int i=9; i>0; i--){
+		serie[i] = serie[i-1];
+		val += serie[i]/10.0;
+	}
+	serie[0] = CTE_ADC_TEMP*(float)ADC1->DR/(1<<12);
+	val += serie[0]/10.0;
 	if((int)(val*100)%10 >=5)//val = ab.cdef *100-> abcd.ef %10 -> d se d>5 ->arredonda para cima
 		val += 0.1;
 	lcdWritechar((int)val%100/10+0x30);
