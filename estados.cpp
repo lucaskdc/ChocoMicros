@@ -149,8 +149,19 @@ void estProducao(void){
 		case 2: //continua a executar o caso 1 , mas com o login de fechamento disponivel
 			retornoLogin = loginFechamento();
 		  switch(retornoLogin){
-				case -1:
-					subEstado = 0;
+				case -1: //limpa tela e volta ao subestado de exibir valores de produção
+					clearDisplay();
+					if(produtoAtual == 1){
+						lcdWritePos("Prod. Ao Leite", 0, 0);
+						lcdWritePos("QTD:", 0,1);
+						lcdWriteInt(unidadesProduzidas[0], 5);
+					}else{
+						lcdWritePos("Prod. Meio Amarg", 0, 0);
+						lcdWritePos("QTD:", 0,1);
+						lcdWriteInt(unidadesProduzidas[1], 5);
+					}
+					lcdWriteTemp(10,1);
+					subEstado = 1;
 				break;
 				case 1:
 					funNovoEstado = &estTrocaProducao;
@@ -186,6 +197,10 @@ int loginFechamento(void){
 	const char operador[3][7] = {"288698","290431","288678"};
 	int teste;
 	switch(estadoLogin){
+		case 11:
+			if(ultTecla == 0)
+				estadoLogin = 1;
+		break;
 		case 0:
 			loginUser[0] = 0;
 			loginPasswd[0] = 0;
@@ -196,8 +211,8 @@ int loginFechamento(void){
 		
 		case 1:
 			tamanho = strlen((const char*)loginUser);
-			if(ultTecla > 0x30 && ultTecla < 0x39 && tamanho<6){ //se a tecla eh um numero e o tamanho n chegou a 7=6
-				setCursor(1,4+tamanho);
+			if(ultTecla >= 0x30 && ultTecla <= 0x39 && tamanho<6){ //se a tecla eh um numero e o tamanho n chegou a 7=6
+				setCursor(4+tamanho,1);
 				loginUser[tamanho] = ultTecla;
 				loginUser[++tamanho] = 0;				
 				lcdWritechar(ultTecla);
@@ -206,7 +221,7 @@ int loginFechamento(void){
 					estadoLogin = 0;
 					return -1;
 				}else{
-					setCursor(1,4+tamanho-1);
+					setCursor(4+tamanho-1,1);
 					loginUser[tamanho-1] = 0;
 					lcdWritechar(' ');
 				}
@@ -231,6 +246,8 @@ int loginFechamento(void){
 					}
 				}
 			}
+			if(estadoLogin == 1 && ultTecla != 0)
+				estadoLogin = 11;
 		break;
 		case -1:
 			clearDisplay();
@@ -243,7 +260,7 @@ int loginFechamento(void){
 		case 2:
 			tamanho = strlen((const char*)loginPasswd);
 			if(ultTecla > 0x30 && ultTecla < 0x39 && tamanho<5){ //se a tecla eh um numero e o tamanho n chegou a 7=6
-				setCursor(1,11+tamanho);
+				setCursor(11+tamanho,1);
 				loginPasswd[tamanho] = ultTecla;
 				loginPasswd[++tamanho] = 0;				
 				lcdWritechar('*');
@@ -252,7 +269,7 @@ int loginFechamento(void){
 						tempoUltMudancaTela = -9999;
 						estadoLogin = 0;
 				}else{
-					setCursor(1,11+tamanho-1);
+					setCursor(11+tamanho-1,1);
 					loginPasswd[tamanho-1] = 0;
 					lcdWritechar(' ');
 				}
