@@ -4,6 +4,7 @@
 #ifndef CONFIG_PERIFERICOS_H
 #define CONFIG_PERIFERICOS_H
 void configuraClock(void);
+void configGPIOs(void);
 void configRTC(void);
 int tempoRTC(void);
 void configADC(void);

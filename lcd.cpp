@@ -50,15 +50,6 @@ void clearDisplay(){
 }
 
 void lcdConfig(){
-	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN;  //ports A & C clock enabled
-	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;  //TIM3 clock enabled
-	
-	GPIOC->CRH &= ~0xF0F00000; //limpa conf C13 e C15
-  	GPIOC->CRH |= 0x30300000; //C13 & C15 push pull max 50MHz (C13 RS, C15 ENABLE)
-	GPIOA->CRL &= ~0xFFFFFFFF; //limpa conf A0 até A7
-	GPIOA->CRL |= 0x33333333; //LCD DATA PINS
-	GPIOA->CRH = (GPIOA->CRH & 0xFFF000FF) | 0x00033300; //A10 & A11 & A12 OUTPUT PUSH PULL
-	
 	lcdComando(0x38); //function set
 	lcdComando(0x38); //function set
 	lcdComando(0x0C); //display control
@@ -68,13 +59,6 @@ void lcdConfig(){
 }
 
 void setCursor(unsigned int coluna, unsigned int linha){
-	/*lcdComando(0x80); //coloca o cursor na linha 0
-	int i = 0;
-	if(linha == 1) lcdComando(0xC0); //coloca o cursor na linha 1
-	while(i < coluna){      //desloca o cursor para a direita at? atingir a coluna desejada
-		lcdComando(0x14);
-		i++;
-	}*/
 	if(linha == 0)
 		lcdComando(0x80+coluna%16);
 	else
@@ -83,13 +67,6 @@ void setCursor(unsigned int coluna, unsigned int linha){
 }
 
 void lcdWrite(const char string1[16]){ //m?ximo 16 caracteres, tamanho da linha do display
-	/*
-	unsigned int tamanho = 0, i;
-	do{ //mede o tamanho da string
-		tamanho++;
-	} while(string1[tamanho] != '\0'); 
-	for(i = 0; i< tamanho; i++) lcdWritechar(string1[i]); //print
-	*/
 	for(int i = 0; i<16 && string1[i] != '\0'; i++){ //escreve enquanto index<16 e nao encontrar '\0'
 		lcdWritechar(string1[i]);
 	}

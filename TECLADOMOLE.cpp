@@ -27,18 +27,6 @@ entradas digitais
 #define RESETCOLUNA3() GPIOB->BRR = 1<<11
 
 
-void configura_portaB_teclado2(void){ 
-	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPBEN;    //port B clock enabled
-	//B9 linha 0, B8 linha 1, B7 linha 2, B6 linha3, B5 coluna 0, B4 coluna 1, B3 coluna 2, A15
-	//GPIOB->CRH = (GPIOB->CRH & 0xFFFF0000) | 0x00003388; //B8 & B9 input with pull up/down, B10 e B11 push pull
-	GPIOB->CRH = (GPIOB->CRH & 0xF00F0000) | 0x04403388; //B13 & B14 input floating, B8 & B9 input with pull up/down, B10 e B11 push pull
-	GPIOB->CRL = (GPIOB->CRL & 0x00000FF0) | 0x88344003; //B3 & B4 input desativado, B5 e B0 push pull max 50MHz, B6 & B7 input pull up/down
-	GPIOA->CRH = (GPIOA->CRH & 0x0FFFFFFF) | 0x4<<28; //A15 input desativado
-	GPIOB->BSRR = 0xF << 6;   //B9, B8, B7, B6 linhas pull up
-	//GPIOB->BSRR = 0x7<<(3+16);  //B5,B4,B3 clear colunas
-	//GPIOA->BSRR = 1<<(15+16); //A15 clear coluna
-}
-
 void atraso_debounce2(void){ //100us
 	TIM3->PSC = 0;  //PRESCALER
 	TIM3->ARR = 4800-1; //auto reload -> 4800/48MHz = 100us
