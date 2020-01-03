@@ -134,16 +134,24 @@ void refreshQTDeTempLCD(void){
 	setCursor(4,1);
 	lcdWriteInt(unidadesProduzidas[produtoAtual-1], 5);
 	lcdWriteTemp(10,1);
+	tempoUltMudancaTela = tempoRTC();
 }
-
+int produzidosUltimoAbastecimento = 0;
 void estProducao(void){
+	if(subEstado == 0)
+		produzidosUltimoAbastecimento = 0;
 	
 	int retornoLogin;
+	if(!reservatorioCheio() && produzidosUltimoAbastecimento > 35){
+		abreValvula();
+		produzidosUltimoAbastecimento = 0;
+	}
+		
 	if(reservatorioVazio()) //controle do choco no reservatorio
 		abreValvula();
 	if (reservatorioCheio())
 		fechaValvula();
-	
+
 	switch (subEstado){
 		case 0: // inicia produção
 			if(statusPistao())
@@ -193,11 +201,12 @@ void estProducao(void){
 				desativaPistao();
 				tempoFechado=tempoRTC();
 				unidadesProduzidas[produtoAtual-1]++; //incrementa
+				produzidosUltimoAbastecimento++;
 				
 				//if(subEstado == 1)
 					//refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
 			}
-			if(subEstado == 1)
+			if(subEstado == 1 && tempoRTC() > tempoUltMudancaTela + 10)
 					refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
 			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 				ativaPistao();
@@ -382,6 +391,7 @@ void estTrocaProducao(void){
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
+				unidadesProduzidas[produtoAtual-1]++; //incrementa
 			}
 			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 			ativaPistao();
@@ -413,6 +423,8 @@ void estFechamento(void){
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
+				unidadesProduzidas[produtoAtual-1]++; //incrementa
+
 			}
 			if(!(statusPistao()) && (tempoRTC() > tempoFechado + TEMPOPISTAOFECHADO)){
 			ativaPistao();
