@@ -13,11 +13,13 @@
 extern int estadoLogin;
 extern char loginUser[7];
 extern char loginPasswd[6];
-extern int usuarioLogando;
+//extern int usuarioLogando;
+volatile int usuarioLogando=-1;
+
 
 extern int novoEstado;
 extern int produtoAtual;
-extern int produtoNovo;
+//extern int produtoNovo;
 extern int tempoUltMudancaTela;
 extern int subEstado;
 extern char ultTecla;
@@ -34,11 +36,19 @@ extern funcPointer funEstadoAnterior;
 int loginFechamento(void);
 
 void estLoginInicial(void){
-	int user = pedeUsuario();
-	pedeSenha(user);
-	produtoNovo = selecionaProduto();
-	while(le_teclado2())
-		atraso1m65s_lcd();
+	int user;
+	switch(subEstado){
+		case 0:
+			user = pedeUsuario(); //trava programa
+			pedeSenha(user); //trava programa
+			produtoAtual = selecionaProduto(); //trava programa
+			subEstado = 1;
+		break;
+		case 1:
+			if(ultTecla == 0)
+				funNovoEstado = estConfirma;
+		break;
+	}
 }
 void estConfirma(void){
 	switch (subEstado){
@@ -47,7 +57,7 @@ void estConfirma(void){
 			{
 				clearDisplay();
 				lcdWritePos("Confirmar Produção?",0,0);
-				if(produtoNovo == 1)
+				if(produtoAtual == 1)
 					lcdWritePos("Ao Leite",0,1);
 				else
 					lcdWritePos("Meio Amargo",0,1);
@@ -67,7 +77,7 @@ void estConfirma(void){
 	}
 	if(ultTecla == '#'){
 		funNovoEstado = &estInicializacao;
-		produtoAtual = produtoNovo;
+		//produtoAtual = produtoNovo;
 	}
 	else if(ultTecla == 'D'){
 		funNovoEstado = &estLoginInicial;
@@ -194,7 +204,8 @@ void estProducao(void){
 int loginFechamento(void){
 	int tamanho=0;
 	int usuarioOK=0;
-
+	int i,j;
+	
 	const char operador[3][7] = {"288698","290431","288678"};
 	int teste;
 	switch(estadoLogin){
@@ -229,9 +240,9 @@ int loginFechamento(void){
 			} else if(ultTecla == '#'){
 				usuarioOK = 0;
 				teste = 0;
-				int i,j;
 				
-				for(j=0; j<2 && teste == 0; j++){
+				
+				for(j=0; j<3 && teste == 0; j++){
 					teste = 1;
 					for(i=0; i<6 && teste == 1; i++){
 						if(loginUser[i] != operador[j][i])
@@ -242,7 +253,7 @@ int loginFechamento(void){
 					}
 					if(usuarioOK){
 						estadoLogin = 20;
-						usuarioLogando = j-1;
+						usuarioLogando = j;
 					} else {
 						tempoUltMudancaTela = -9999;
 						estadoLogin = -11;
@@ -314,10 +325,10 @@ int loginFechamento(void){
 			}
 		break;
 		case 3:
-			if(ultTecla == 1){
+			if(ultTecla == '1'){
 				return 1;
 			}
-			if(ultTecla == 2){
+			if(ultTecla == '2'){
 				return 2;
 			}
 		break;
@@ -337,11 +348,6 @@ void estEmergencia(void){
 	if(ultTecla == '*')
 		funNovoEstado = funEstadoAnterior;
 
-}
-void LoginFechamento(void){
-	
-	
-	
 }
 void estTrocaProducao(void){
 	switch(subEstado){
@@ -364,7 +370,10 @@ void estTrocaProducao(void){
 		break;			
 		case 2:
 			desligaEsteira();
-			produtoAtual = produtoNovo;
+			if(produtoAtual == 1)
+				produtoAtual = 2;
+			else
+				produtoAtual = 1;
 			funNovoEstado = &estInicializacao;
 			
 		break;
@@ -372,8 +381,12 @@ void estTrocaProducao(void){
 }
 void estFechamento(void){
 	switch(subEstado){
-	
-		case 0: //espera esvaziar 
+		case 0:
+			clearDisplay();
+			lcdWritePos("Fechando Producao", 0, 0);
+			lcdWritePos("ESVAZIANDO RESERV", 0, 1);
+			subEstado = 1;
+		case 1: //espera esvaziar 
 			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
@@ -383,11 +396,10 @@ void estFechamento(void){
 			tempoAberto=tempoRTC();
 			}
 			if(reservatorioVazio())
-				subEstado=1;
+				subEstado=2;
 		 break;
 			
-		case 1:
-			
+		case 2:
 			desativaPistao();
 			desligaEsteira();
 			funNovoEstado = &estRelatorio;
@@ -401,17 +413,24 @@ void estRelatorio(void){
 			lcdWritePos("RESUMO DE PROD",0,0);
 			lcdWritePos("DE BOMBONS [#]",0,1);
 			tempoUltMudancaTela = tempoRTC();
-			if(ultTecla == '#'){
+			if(ultTecla == 0)
 				subEstado = 1;
-				tempoUltMudancaTela = -9999; //força atualização
-			}
 		break;
 		case 1:
+			if(ultTecla == '#'){
+				subEstado = 2;
+			}
+		break;
+		case 2:
 			clearDisplay();
-			lcdWritePos("AO LEITE: ",0,0);
-			lcdWriteInt(unidadesProduzidas[0], 2);
-			lcdWritePos("MEIO AMARGO: ",0,1);
-			lcdWriteInt(unidadesProduzidas[1], 2);
+			lcdWritePos("AO LEITE:  ",0,0);
+			lcdWriteInt(unidadesProduzidas[0], 5);
+			lcdWritePos("1/2 AMARGO:",0,1);
+			lcdWriteInt(unidadesProduzidas[1], 5);
+			if(ultTecla == 0)
+				subEstado = 3;
+		break;
+		case 3:
 			if(ultTecla == '#'){
 				funNovoEstado = estLoginInicial;
 			}

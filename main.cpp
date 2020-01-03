@@ -15,7 +15,7 @@ const float Kp=1.3, Kd=0.5;
 volatile float e[2] = {0};
 volatile int unidadesProduzidas[2]={0};
 volatile int produtoAtual = 1;
-volatile int produtoNovo = 1;
+//volatile int produtoNovo = 1;
 
 volatile char ultTecla = 0;
 volatile int tempoUltMudancaTela = 0;
@@ -25,7 +25,6 @@ volatile int subEstado = 0;
 volatile int estadoLogin = 0;
 volatile char loginUser[7];
 volatile char loginPasswd[6];
-volatile int usuarioLogando=0;
 
 volatile int tempoAberto=0, tempoFechado=0; //Pistão 
 
@@ -68,12 +67,7 @@ int main(){
 	aquecedor = PWM();	//inicializa PWM, aquecedor é var global
 	lcdConfig();
 	
-	//int user = pedeUsuario();
-	//pedeSenha(user);
-	//produtoNovo = selecionaProduto();
-	funNovoEstado = estProducao;
-	while(le_teclado2())
-		atraso1m65s_lcd();
+	funNovoEstado = estLoginInicial;
 	for(;;){
 		
 		if((tempoRTC() - tempoaberto1min) > 6000){ //abre a válvula caso passe de 1min desde a última abertura
