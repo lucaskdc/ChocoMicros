@@ -12,4 +12,6 @@ void lcdWrite(const char string1[16]);
 void lcdWritePos(const char string1[16], unsigned int coluna, unsigned int linha);
 void lcdWriteInt(int var);
 void lcdWriteInt(int var, int n);
+void lcdWriteTemp(void);
+void lcdWriteTemp(int coluna, int linha);
 #endif

@@ -7,7 +7,7 @@
 #include "auxiliares.h"
 #include "login_e_config.h"
 #include "estados.h"
-
+#include "CONSTANTES.h"
 
 PWM aquecedor;
 const float Kp=1.3, Kd=0.5;

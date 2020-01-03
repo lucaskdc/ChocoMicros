@@ -8,7 +8,7 @@
 #include "ComArduino.h"
 #include "login_e_config.h"
 #include <string.h>
-
+#include "CONSTANTES.h"
 
 extern int estadoLogin;
 extern char loginUser[7];
@@ -85,10 +85,7 @@ void estInicializacao(void){
 		case 1: //aquecendo
 			
 			if(tempoRTC() > tempoUltMudancaTela + 50){
-				char textoTemp[5];
-				temp2str(textoTemp, (float)ADC1->DR/(1<<12)*CTE_ADC_TEMP);
-				lcdWritePos(textoTemp,11,1);
-				lcdWrite("ºC");
+				lcdWriteTemp(11,1);
 				tempoUltMudancaTela = tempoRTC();
 			}
 			if( e[0] > -0.25 && e[0] < 0.25 ){
@@ -115,7 +112,15 @@ void estInicializacao(void){
 		break;
 	}
 }
+
+void refreshQTDeTempLCD(void){
+	setCursor(4,1);
+	lcdWriteInt(unidadesProduzidas[produtoAtual-1], 5);
+	lcdWriteTemp(10,1);
+}
+
 void estProducao(void){
+	
 	int retornoLogin;
 	if(reservatorioVazio()) //controle do choco no reservatorio
 		abreValvula();
@@ -126,7 +131,17 @@ void estProducao(void){
 		case 0: // inicia produção
 			if(statusPistao())
 				desativaPistao();
-			
+			clearDisplay();
+			if(produtoAtual == 1){
+				lcdWritePos("Prod. Ao Leite", 0, 0);
+				lcdWritePos("QTD:", 0,1);
+				lcdWriteInt(unidadesProduzidas[0], 5);
+			}else{
+				lcdWritePos("Prod. Meio Amarg", 0, 0);
+				lcdWritePos("QTD:", 0,1);
+				lcdWriteInt(unidadesProduzidas[1], 5);
+			}
+			lcdWriteTemp(10,1);
 			ativaPistao();
 			tempoAberto=tempoRTC();
 			subEstado=1;
@@ -145,9 +160,13 @@ void estProducao(void){
 				break;
 			}
 		case 1:
-			if(statusPistao() && (tempoRTC() >= tempoAberto + 100)){
+			if(statusPistao() && (tempoRTC() >= tempoAberto + 900)){
 				desativaPistao();
 				tempoFechado=tempoRTC();
+				unidadesProduzidas[produtoAtual-1]++; //incrementa
+				
+				if(subEstado == 1)
+					refreshQTDeTempLCD(); //só atualiza se não estiver no estado de Login
 			}
 			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
 				ativaPistao();

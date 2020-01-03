@@ -1,6 +1,7 @@
 #include "stm32f10x.h"
 #include <string.h>
 #include "lcd.h"
+#include "CONSTANTES.h"
 /*
 pinos de dados: A0 - A7
 pino de enable: C15
@@ -133,12 +134,27 @@ void lcdWriteInt(int var, int n){
 		lcdWritechar('-');
 		var = -var;
 	}
-	int tmp=var;
+	
 	for(int i=n-1; i>=0; i--){
+		int tmp=var;
 		for(int j=0; j<i; j++){
 			tmp /= 10;
 		}
 			lcdWritechar(tmp%10+0x30);
 	}
 }
-
+void lcdWriteTemp(void){
+	float val = CTE_ADC_TEMP*(float)ADC1->DR/(1<<12);
+	if((int)(val*100)%10 >=5)//val = ab.cdef *100-> abcd.ef %10 -> d se d>5 ->arredonda para cima
+		val += 0.1;
+	lcdWritechar((int)val%100/10+0x30);
+	lcdWritechar((int)val%10+0x30);
+	lcdWritechar('.');
+	lcdWritechar((int)(val*10)%10+0x30);
+	lcdWritechar('o');
+	lcdWritechar('C');
+}
+void lcdWriteTemp(int coluna, int linha){
+	setCursor(coluna, linha);
+	lcdWriteTemp();
+}

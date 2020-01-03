@@ -43,7 +43,8 @@ void configRTC(void){
 }
 
 int tempoRTC(void){
-	return (RTC->CNTH << 16) | (RTC->CNTL);
+	int tempo = (RTC->CNTH << 16) | (RTC->CNTL);
+	return tempo;
 }
 
 void configADC(void){
