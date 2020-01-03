@@ -6,7 +6,7 @@
 
 extern int tempofechado1min;
 void fechaValvula(void){
-	if(GPIOA->ODR & (1<<12))
+	if(!(GPIOA->ODR & (1<<12))) //se valvula tava aberta (LOW), fecha nesse momento e conta tempo
 		tempofechado1min=tempoRTC();
 	GPIOA->BSRR = (1<<12); //fecha válvula com 1 em A12
 }
