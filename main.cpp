@@ -51,12 +51,12 @@ extern "C" void ADC1_2_IRQHandler(){
 
 int main(){
 	configuraClock();
+	configGPIOs();
 	configRTC();
 	configADC();
 	aquecedor = PWM();	//inicializa PWM, aquecedor é var global
-	
 	lcdConfig();
-	configura_portaB_teclado2();
+	
 	//int user = pedeUsuario();
 	//pedeSenha(user);
 	produtoNovo = selecionaProduto();

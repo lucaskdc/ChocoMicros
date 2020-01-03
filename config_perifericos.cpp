@@ -4,6 +4,7 @@
 #include "stm32f10x.h"
 #include "config_perifericos.h"
 
+
 void configuraClock(void){
 	////////////////////////////////////////
 	//CLOCK, CONFIGURA CLOCK
@@ -19,12 +20,39 @@ void configuraClock(void){
 	//////////////////////////////////
 	//Liga Periféricos
 	RCC->APB2ENR |= RCC_APB2ENR_ADC1EN //Liga ADC1
-							 | RCC_APB2ENR_TIM1EN //Liga Timer1
-							 | RCC_APB2ENR_IOPAEN //Liga PortA
-							 | RCC_APB2ENR_IOPBEN	//Liga PortB
+							 | RCC_APB2ENR_TIM1EN  //Liga Timer1
+							 | RCC_APB2ENR_IOPAEN  //Liga PortA
+							 | RCC_APB2ENR_IOPBEN  //Liga PortB
 							 | RCC_APB2ENR_IOPCEN; //Liga PortC
-	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN; //Liga Timer2
+	RCC->APB1ENR |= RCC_APB1ENR_TIM2EN //Liga Timer2
+							 | RCC_APB1ENR_TIM3EN; //Liga Timer3
 	configA8MCO(); // usado para verificar PLL/2, usa o pino A8
+}
+
+void configGPIOs(void){
+	//display lcd:
+  GPIOC->CRH &= ~0xF0F00000; //limpa conf C13 e C15
+  GPIOC->CRH |= 0x30300000; //C13 & C15 push pull max 50MHz (C13 RS, C15 ENABLE)
+	GPIOA->CRL &= ~0xFFFFFFFF; //limpa conf A0 até A7
+	GPIOA->CRL |= 0x33333333; //LCD DATA PINS
+	
+	//teclado:
+	GPIOB->CRH = (GPIOB->CRH & 0xFFFF0000) | 0x00003388; //B8 & B9 input with pull up/down, B10 e B11 push pull
+	GPIOB->CRL = (GPIOB->CRL & 0x00000FF0) | 0x88344003; //B3 & B4 input desativado, B5 e B0 push pull max 50MHz, B6 & B7 input pull up/down
+	GPIOA->CRH = (GPIOA->CRH & 0x0FFFFFFF) | 0x4<<28; //A15 input desativado
+	GPIOB->BSRR = 0xF << 6;   //B9, B8, B7, B6 linhas pull up
+	
+	//SENSORES DIGITAIS
+	//B13 entrada reservatorio vazio
+	//B14 entrada reservatorio cheio
+	GPIOB->CRH = (GPIOB->CRH & 0xF00FFFFF) | 0x04400000; //B13 & B14 input floating
+
+	//ATUADORES DIGITAIS
+	//A10 pistão de saída de chocolate
+	//A11 esteira
+	//A12 válvula movimentação de chocolate
+	GPIOA->CRH = (GPIOA->CRH & 0xFFF000FF) | 0x00033300; //A10 & A11 & A12 OUTPUT push pull max 50MHz
+	
 }
 
 void configRTC(void){
