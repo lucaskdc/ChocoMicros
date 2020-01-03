@@ -8,6 +8,7 @@
 #include "login_e_config.h"
 #include "estados.h"
 #include "CONSTANTES.h"
+#include "ComArduino.h"
 
 PWM aquecedor;
 const float Kp=1.3, Kd=0.5;
@@ -26,6 +27,7 @@ volatile char loginUser[7];
 volatile char loginPasswd[6];
 
 volatile int tempoAberto=0, tempoFechado=0;
+volatile int flag1min=0, tempoaberto1min=0;
 
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
@@ -42,8 +44,9 @@ void trocaEstado(funcPointer p){
 }
 
 extern "C" void TIM4_IRQHandler(){
-	
-	
+	flag1min=1;
+	abreValvula();
+	tempoAberto=tempoRTC();
 }
 
 extern "C" void ADC1_2_IRQHandler(){
@@ -70,6 +73,13 @@ int main(){
 	while(le_teclado2())
 		atraso1m65s_lcd();
 	for(;;){
+		
+		if(flag1min && (tempoRTC()> (tempoaberto1min + 400))){
+			fechaValvula();
+			flag1min=0;
+		}
+			
+		
 		if(funNovoEstado != funEstado)
 			trocaEstado(funNovoEstado);
 		funEstado();
