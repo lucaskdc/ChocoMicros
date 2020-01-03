@@ -25,7 +25,7 @@ volatile int estadoLogin = 0;
 volatile char loginUser[7];
 volatile char loginPasswd[6];
 
-volatile int tempoAberto, tempoFechado;
+volatile int tempoAberto=0, tempoFechado=0;
 
 typedef void (*funcPointer)(void);
 funcPointer funEstadoAnterior = &estConfirma;
@@ -59,7 +59,8 @@ int main(){
 	
 	//int user = pedeUsuario();
 	//pedeSenha(user);
-	produtoNovo = selecionaProduto();
+	//produtoNovo = selecionaProduto();
+	funNovoEstado = estProducao;
 	while(le_teclado2())
 		atraso1m65s_lcd();
 	for(;;){

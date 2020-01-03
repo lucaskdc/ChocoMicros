@@ -472,6 +472,11 @@
               <FileType>5</FileType>
               <FilePath>.\estados.h</FilePath>
             </File>
+            <File>
+              <FileName>CONSTANTES.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\CONSTANTES.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

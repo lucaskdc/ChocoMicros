@@ -32,14 +32,20 @@ void atraso1m65s_lcd(void){
 	TIM3->SR &= ~(1<<0);
 } 
 void lcdComando(char data_display){
-	GPIOA->ODR = (data_display & 0xFF);
+	//GPIOA->ODR = (data_display & 0xFF);
+	GPIOA->ODR = (data_display & 0xFF) | (GPIOA->ODR & 0xFF00);
+	//GPIOA->BRR = (!data_display) & 0xFF;
+	//GPIOA->BSRR = data_display & 0xFF;
 	GPIOC->BRR = 1<<13;  	  //RS = 0
 	pulseEnable();
 	atraso40us_lcd();
 }
 
 void lcdWritechar(char data_display){
-	GPIOA->ODR = (data_display & 0xFF);
+	//GPIOA->ODR = (data_display & 0xFF);
+	GPIOA->ODR = (data_display & 0xFF) | (GPIOA->ODR & 0xFF00);
+	//GPIOA->BRR = (!data_display) & 0xFF;
+	//GPIOA->BSRR = data_display & 0xFF;
 	GPIOC->BSRR = 1<<13;  	 //RS = 1
 	pulseEnable();
 	atraso40us_lcd();
