@@ -6,23 +6,32 @@
 #include "PWM_T1CH2_A9.h"
 #include "auxiliares.h"
 #include "ComArduino.h"
-
+#include "login_e_config.h"
 
 
 extern int novoEstado;
 extern int produtoConfigurado;
 extern int produtoAtual;
+extern int produtoNovo;
 extern int tempoUltMudancaTela;
 extern int subEstado;
 extern char ultTecla;
 extern PWM aquecedor;
 extern float e[2];
 extern float referencia;
+extern float tempAlvo;
 
 typedef void (*funcPointer)(void);
 extern funcPointer funNovoEstado;
+extern funcPointer funEstadoAnterior;
 
 void estLoginInicial(void){
+	int user = pedeUsuario();
+	pedeSenha(user);
+	produtoAtual = selecionaProduto();
+	tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5; //se produto 1, tempAlvo é 27.5, se não, 29.5
+	while(le_teclado2())
+		atraso1m65s_lcd();
 }
 void estConfirma(void){
 	switch (subEstado){
@@ -73,9 +82,7 @@ void estInicializacao(void){
 				lcdWrite("ºC");
 				tempoUltMudancaTela = tempoRTC();
 			}
-			if( e[0] > -0.025 && e[0] < 0.025 &&
-0
-			){
+			if( e[0] > -0.25 && e[0] < 0.25 ){
 				clearDisplay();
 				lcdWritePos("Inic. Producao",0,0);
 				lcdWritePos("2)Abast Reserv",0,1);
@@ -100,38 +107,82 @@ void estInicializacao(void){
 	}
 }
 void estProducao(void){
+	if(reservatorioVazio()) //controle do choco no reservatorio
+		abreValvula();
+	if (reservatorioCheio())
+		fechaValvula();
 	
+	switch (subEstado){
+		case 0: // inicia produção
+			if(statusPistao())
+				desativaPistao();
+			
+			ativaPistao();
+			tempoAberto=tempoRTC();
+			subEstado=1;
+		break;
+		case 2: //continua a executar o caso 1 , mas com o login de fechamento disponivel
+			LoginFechamento();		
+		case 1:
+			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
+				desativaPistao();
+				tempoFechado=tempoRTC();
+			}
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			ativaPistao();
+			tempoAberto=tempoRTC();
+			}
+		break;			
+	}
+	if(ultTecla=='A')
+		subEstado=2;
 }
 void estEmergencia(void){
 	int estadoPistao = statusPistao();
 	int estadoEsteira = statusEsteira();
-	int estadoValvula = statusValvula();
-	int estadoAquecedor = aquecedor.getOutputEnable();
-	fechaValvula();
 	desativaPistao();
 	desligaEsteira();
-	aquecedor.disableOutput();
 	clearDisplay();
 	lcdWritePos("Parada de emergência",0,0);
 	lcdWritePos("Sair [*]",0,1);
-	while(le_teclado2() != '*'); //espera apertar botao para sair
-	if(estadoAquecedor)
-		aquecedor.enableOutput();
-	if(estadoEsteira)
-		ligaEsteira();
-	if(estadoPistao)
-		ativaPistao();
-	if(estadoValvula)
-		abreValvula();
+	if(ultTecla == '*')
+		funNovoEstado = funEstadoAnterior;
+
 }
 void estLoginFechamento(void){
 	
 }
 void estTrocaProducao(void){
+	switch(subEstado){
 	
+		case 0: //espera esvaziar 
+			if(statusPistao() && (tempoRTC() > tempoAberto + 100)){
+				desativaPistao();
+				tempoFechado=tempoRTC();
+			}
+			if(!(statusPistao()) && (tempoRTC() > tempoFechado + 10)){
+			ativaPistao();
+			tempoAberto=tempoRTC();
+			}
+			if(reservatorioVazio())
+				subEstado=1;
+			break;			
+		case 1:
+			desligaEsteira();
+			trocaProduto();//criar func 
+			funNovoEstado = &estInicializacao;
+			
+		break;
+	}
 }
 void estFechamento(void){
-	
+		if(!reservatorioVazio()){
+		//espera esvaziar
+	}else{
+		desativaPistao();
+		desligaEsteira();
+		funNovoEstado = estR;
+	}
 }
 void estRelatorio(void){
 	

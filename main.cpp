@@ -13,8 +13,8 @@ PWM aquecedor;
 const float Kp=2, Kd=0.5;
 volatile float e[2] = {0};
 volatile float referencia = 0.50; //50%
-volatile float tempAlvo = 27.5;
 volatile int produtoAtual = 1;
+volatile int produtoNovo = 1;
 
 volatile char ultTecla = 0;
 volatile int produtoConfigurado = 1;
@@ -37,6 +37,7 @@ void trocaEstado(funcPointer p){
 }
 
 extern "C" void ADC1_2_IRQHandler(){
+	float tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5;
 	e[1] = e[0];
 	e[0] = tempAlvo - CTE_ADC_TEMP*(float)ADC1->DR/(1<<12); //normalizado 0 a 1
 	float u = Kp*e[0] + Kd*(e[0]-e[1]);
@@ -47,21 +48,15 @@ int main(){
 	configuraClock();
 	configRTC();
 	configADC();
-	
 	aquecedor = PWM();	//inicializa PWM, aquecedor é var global
 	
 	lcdConfig();
-	lcdWrite("OLA");
-
 	configura_portaB_teclado2();
-//	int i=0;
-	//char vect[16];
-	
 	//int user = pedeUsuario();
 	//pedeSenha(user);
 	produtoAtual = selecionaProduto();
-	tempAlvo = ( produtoAtual == 1) ? 27.5 : 29.5; //se produto 1, tempAlvo é 27.5, se não, 29.5
-	
+	while(le_teclado2())
+		atraso1m65s_lcd();
 	for(;;){
 		if(funNovoEstado != funEstado)
 			trocaEstado(funNovoEstado);

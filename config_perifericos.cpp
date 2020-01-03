@@ -79,3 +79,7 @@ void configA8MCO(){ //configura pino A8 para saída MCO (para fins de teste de cl
 	GPIOA->CRH |= 0x8; //Modo alternativo (saída clock) pushpull A8
 	GPIOA->CRH |= GPIO_CRH_MODE8_1 | GPIO_CRH_MODE8_0 ; //50MHz
 }
+
+void configTIM4(){
+	
+}
