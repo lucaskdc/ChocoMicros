@@ -358,6 +358,7 @@ int loginFechamento(void){
 void estEmergencia(void){
 	switch(subEstado){
 		case 0:
+			  fechaValvula();
 				desativaPistao();
 				desligaEsteira();
 				clearDisplay();

@@ -14,22 +14,28 @@ Section Cross References
     main.o(i.ADC1_2_IRQHandler) refers to fmul.o(x$fpl$fmul) for __aeabi_fmul
     main.o(i.ADC1_2_IRQHandler) refers to faddsub_clz.o(x$fpl$fadd) for __aeabi_fadd
     main.o(i.ADC1_2_IRQHandler) refers to pwm_t1ch2_a9.o(i._ZN3PWM12setDutyCycleEf) for PWM::setDutyCycle(float)
-    main.o(i.ADC1_2_IRQHandler) refers to main.o(.data) for produtoAtual
+    main.o(i.ADC1_2_IRQHandler) refers to main.o(.data) for funEstado
+    main.o(i.ADC1_2_IRQHandler) refers to estados.o(i._Z16estInicializacaov) for estInicializacao()
+    main.o(i.ADC1_2_IRQHandler) refers to estados.o(i._Z11estProducaov) for estProducao()
+    main.o(i.ADC1_2_IRQHandler) refers to estados.o(i._Z16estTrocaProducaov) for estTrocaProducao()
+    main.o(i.ADC1_2_IRQHandler) refers to estados.o(i._Z13estFechamentov) for estFechamento()
+    main.o(i.ADC1_2_IRQHandler) refers to estados.o(i._Z13estEmergenciav) for estEmergencia()
     main.o(i._Z11trocaEstadoPFvvE) refers to main.o(.data) for funEstado
     main.o(i.__sti___8_main_cpp_ea587f0a) refers to pwm_t1ch2_a9.o(i._ZN3PWMC1Ev) for PWM::PWM()
     main.o(i.__sti___8_main_cpp_ea587f0a) refers to main.o(.data) for aquecedor
     main.o(i.main) refers to config_perifericos.o(i._Z14configuraClockv) for configuraClock()
+    main.o(i.main) refers to config_perifericos.o(i._Z11configGPIOsv) for configGPIOs()
     main.o(i.main) refers to config_perifericos.o(i._Z9configRTCv) for configRTC()
     main.o(i.main) refers to config_perifericos.o(i._Z9configADCv) for configADC()
     main.o(i.main) refers to pwm_t1ch2_a9.o(i._ZN3PWMC1Ev) for PWM::PWM()
     main.o(i.main) refers to lcd.o(i._Z9lcdConfigv) for lcdConfig()
-    main.o(i.main) refers to tecladomole.o(i._Z25configura_portaB_teclado2v) for configura_portaB_teclado2()
-    main.o(i.main) refers to login_e_config.o(i._Z16selecionaProdutov) for selecionaProduto()
-    main.o(i.main) refers to lcd.o(i._Z15atraso1m65s_lcdv) for atraso1m65s_lcd()
-    main.o(i.main) refers to tecladomole.o(i._Z11le_teclado2v) for le_teclado2()
+    main.o(i.main) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
+    main.o(i.main) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
     main.o(i.main) refers to main.o(i._Z11trocaEstadoPFvvE) for trocaEstado(void(*)())
+    main.o(i.main) refers to tecladomole.o(i._Z11le_teclado2v) for le_teclado2()
+    main.o(i.main) refers to estados.o(i._Z15estLoginInicialv) for estLoginInicial()
+    main.o(i.main) refers to main.o(.data) for funNovoEstado
     main.o(i.main) refers to estados.o(i._Z13estEmergenciav) for estEmergencia()
-    main.o(i.main) refers to main.o(.data) for produtoNovo
     main.o(.ARM.exidx) refers to main.o(i._Z11trocaEstadoPFvvE) for i._Z11trocaEstadoPFvvE
     main.o(.ARM.exidx) refers to main.o(i.ADC1_2_IRQHandler) for i.ADC1_2_IRQHandler
     main.o(.ARM.exidx) refers to main.o(i.main) for i.main
@@ -66,6 +72,18 @@ Section Cross References
     lcd.o(i._Z11lcdWritePosPKcjj) refers to lcd.o(i._Z12lcdWritecharc) for lcdWritechar(char)
     lcd.o(i._Z12clearDisplayv) refers to lcd.o(i._Z10lcdComandoc) for lcdComando(char)
     lcd.o(i._Z12clearDisplayv) refers to lcd.o(i._Z15atraso1m65s_lcdv) for atraso1m65s_lcd()
+    lcd.o(i._Z12lcdWriteTempii) refers to lcd.o(i._Z9setCursorjj) for setCursor(unsigned, unsigned)
+    lcd.o(i._Z12lcdWriteTempii) refers to lcd.o(i._Z12lcdWriteTempv) for lcdWriteTemp()
+    lcd.o(i._Z12lcdWriteTempv) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
+    lcd.o(i._Z12lcdWriteTempv) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
+    lcd.o(i._Z12lcdWriteTempv) refers to daddsub_clz.o(x$fpl$dadd) for __aeabi_dadd
+    lcd.o(i._Z12lcdWriteTempv) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
+    lcd.o(i._Z12lcdWriteTempv) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
+    lcd.o(i._Z12lcdWriteTempv) refers to dmul.o(x$fpl$dmul) for __aeabi_dmul
+    lcd.o(i._Z12lcdWriteTempv) refers to fmul.o(x$fpl$fmul) for __aeabi_fmul
+    lcd.o(i._Z12lcdWriteTempv) refers to ffix.o(x$fpl$ffix) for __aeabi_f2iz
+    lcd.o(i._Z12lcdWriteTempv) refers to lcd.o(i._Z12lcdWritecharc) for lcdWritechar(char)
+    lcd.o(i._Z12lcdWriteTempv) refers to lcd.o(.bss) for serie
     lcd.o(i._Z12lcdWritecharc) refers to lcd.o(i._Z11pulseEnablev) for pulseEnable()
     lcd.o(i._Z12lcdWritecharc) refers to lcd.o(i._Z14atraso40us_lcdv) for atraso40us_lcd()
     lcd.o(i._Z8lcdWritePKc) refers to lcd.o(i._Z12lcdWritecharc) for lcdWritechar(char)
@@ -85,17 +103,22 @@ Section Cross References
     lcd.o(.ARM.exidx) refers to lcd.o(i._Z11lcdWritePosPKcjj) for i._Z11lcdWritePosPKcjj
     lcd.o(.ARM.exidx) refers to lcd.o(i._Z11lcdWriteInti) for i._Z11lcdWriteInti
     lcd.o(.ARM.exidx) refers to lcd.o(i._Z11lcdWriteIntii) for i._Z11lcdWriteIntii
+    lcd.o(.ARM.exidx) refers to lcd.o(i._Z12lcdWriteTempv) for i._Z12lcdWriteTempv
+    lcd.o(.ARM.exidx) refers to lcd.o(i._Z12lcdWriteTempii) for i._Z12lcdWriteTempii
     tecladomole.o(i._Z11le_teclado2v) refers to tecladomole.o(i._Z9debounce2ii) for debounce2(int, int)
     tecladomole.o(i._Z11le_teclado2v) refers to tecladomole.o(i._Z11ij_to_char2ii) for ij_to_char2(int, int)
     tecladomole.o(i._Z9debounce2ii) refers to tecladomole.o(i._Z16atraso_debounce2v) for atraso_debounce2()
-    tecladomole.o(.ARM.exidx) refers to tecladomole.o(i._Z25configura_portaB_teclado2v) for i._Z25configura_portaB_teclado2v
     tecladomole.o(.ARM.exidx) refers to tecladomole.o(i._Z16atraso_debounce2v) for i._Z16atraso_debounce2v
     tecladomole.o(.ARM.exidx) refers to tecladomole.o(i._Z9debounce2ii) for i._Z9debounce2ii
     tecladomole.o(.ARM.exidx) refers to tecladomole.o(i._Z11ij_to_char2ii) for i._Z11ij_to_char2ii
     tecladomole.o(.ARM.exidx) refers to tecladomole.o(i._Z11le_teclado2v) for i._Z11le_teclado2v
+    comarduino.o(i._Z12fechaValvulav) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
+    comarduino.o(i._Z12fechaValvulav) refers to main.o(.data) for tempofechado1min
+    comarduino.o(.ARM.exidx) refers to comarduino.o(i._Z12fechaValvulav) for i._Z12fechaValvulav
     config_perifericos.o(i._Z14configuraClockv) refers to config_perifericos.o(i._Z11configA8MCOv) for configA8MCO()
     config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z11configA8MCOv) for i._Z11configA8MCOv
     config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z14configuraClockv) for i._Z14configuraClockv
+    config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z11configGPIOsv) for i._Z11configGPIOsv
     config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z9configRTCv) for i._Z9configRTCv
     config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z8tempoRTCv) for i._Z8tempoRTCv
     config_perifericos.o(.ARM.exidx) refers to config_perifericos.o(i._Z9configADCv) for i._Z9configADCv
@@ -147,34 +170,52 @@ Section Cross References
     estados.o(i._Z11estConfirmav) refers to main.o(.data) for subEstado
     estados.o(i._Z11estConfirmav) refers to estados.o(i._Z16estInicializacaov) for estInicializacao()
     estados.o(i._Z11estConfirmav) refers to estados.o(i._Z15estLoginInicialv) for estLoginInicial()
-    estados.o(i._Z11estProducaov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
     estados.o(i._Z11estProducaov) refers to estados.o(i._Z17reservatorioCheiov) for reservatorioCheio()
+    estados.o(i._Z11estProducaov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
+    estados.o(i._Z11estProducaov) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
     estados.o(i._Z11estProducaov) refers to estados.o(i._Z12statusPistaov) for statusPistao()
     estados.o(i._Z11estProducaov) refers to estados.o(i._Z14desativaPistaov) for desativaPistao()
+    estados.o(i._Z11estProducaov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
+    estados.o(i._Z11estProducaov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
+    estados.o(i._Z11estProducaov) refers to lcd.o(i._Z11lcdWriteIntii) for lcdWriteInt(int, int)
+    estados.o(i._Z11estProducaov) refers to lcd.o(i._Z12lcdWriteTempii) for lcdWriteTemp(int, int)
+    estados.o(i._Z11estProducaov) refers to estados.o(i._Z11ativaPistaov) for ativaPistao()
     estados.o(i._Z11estProducaov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
     estados.o(i._Z11estProducaov) refers to estados.o(i._Z15loginFechamentov) for loginFechamento()
+    estados.o(i._Z11estProducaov) refers to estados.o(i._Z18refreshQTDeTempLCDv) for refreshQTDeTempLCD()
     estados.o(i._Z11estProducaov) refers to main.o(.data) for subEstado
+    estados.o(i._Z11estProducaov) refers to estados.o(.data) for produzidosUltimoAbastecimento
+    estados.o(i._Z11estProducaov) refers to estados.o(i._Z16estTrocaProducaov) for estTrocaProducao()
+    estados.o(i._Z11estProducaov) refers to estados.o(i._Z13estFechamentov) for estFechamento()
     estados.o(i._Z12estRelatoriov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
     estados.o(i._Z12estRelatoriov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
     estados.o(i._Z12estRelatoriov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
     estados.o(i._Z12estRelatoriov) refers to lcd.o(i._Z11lcdWriteIntii) for lcdWriteInt(int, int)
     estados.o(i._Z12estRelatoriov) refers to main.o(.data) for subEstado
     estados.o(i._Z12estRelatoriov) refers to estados.o(i._Z15estLoginInicialv) for estLoginInicial()
-    estados.o(i._Z13estEmergenciav) refers to estados.o(i._Z12statusPistaov) for statusPistao()
+    estados.o(i._Z13estEmergenciav) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
     estados.o(i._Z13estEmergenciav) refers to estados.o(i._Z14desativaPistaov) for desativaPistao()
     estados.o(i._Z13estEmergenciav) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
     estados.o(i._Z13estEmergenciav) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
-    estados.o(i._Z13estEmergenciav) refers to main.o(.data) for ultTecla
-    estados.o(i._Z13estFechamentov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
+    estados.o(i._Z13estEmergenciav) refers to main.o(.data) for subEstado
+    estados.o(i._Z13estEmergenciav) refers to estados.o(i._Z11estProducaov) for estProducao()
+    estados.o(i._Z13estEmergenciav) refers to estados.o(i._Z16estTrocaProducaov) for estTrocaProducao()
+    estados.o(i._Z13estEmergenciav) refers to estados.o(i._Z13estFechamentov) for estFechamento()
+    estados.o(i._Z13estFechamentov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
+    estados.o(i._Z13estFechamentov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
+    estados.o(i._Z13estFechamentov) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
+    estados.o(i._Z13estFechamentov) refers to estados.o(i._Z12statusPistaov) for statusPistao()
+    estados.o(i._Z13estFechamentov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
     estados.o(i._Z13estFechamentov) refers to estados.o(i._Z14desativaPistaov) for desativaPistao()
+    estados.o(i._Z13estFechamentov) refers to estados.o(i._Z11ativaPistaov) for ativaPistao()
+    estados.o(i._Z13estFechamentov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
+    estados.o(i._Z13estFechamentov) refers to main.o(.data) for subEstado
     estados.o(i._Z13estFechamentov) refers to estados.o(i._Z12estRelatoriov) for estRelatorio()
-    estados.o(i._Z13estFechamentov) refers to main.o(.data) for funNovoEstado
     estados.o(i._Z15estLoginInicialv) refers to login_e_config.o(i._Z11pedeUsuariov) for pedeUsuario()
     estados.o(i._Z15estLoginInicialv) refers to login_e_config.o(i._Z9pedeSenhai) for pedeSenha(int)
     estados.o(i._Z15estLoginInicialv) refers to login_e_config.o(i._Z16selecionaProdutov) for selecionaProduto()
-    estados.o(i._Z15estLoginInicialv) refers to lcd.o(i._Z15atraso1m65s_lcdv) for atraso1m65s_lcd()
-    estados.o(i._Z15estLoginInicialv) refers to tecladomole.o(i._Z11le_teclado2v) for le_teclado2()
-    estados.o(i._Z15estLoginInicialv) refers to main.o(.data) for produtoNovo
+    estados.o(i._Z15estLoginInicialv) refers to main.o(.data) for unidadesProduzidas
+    estados.o(i._Z15estLoginInicialv) refers to estados.o(i._Z11estConfirmav) for estConfirma()
     estados.o(i._Z15loginFechamentov) refers to rt_memcpy_w.o(.text) for __aeabi_memcpy4
     estados.o(i._Z15loginFechamentov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
     estados.o(i._Z15loginFechamentov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
@@ -184,38 +225,44 @@ Section Cross References
     estados.o(i._Z15loginFechamentov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
     estados.o(i._Z15loginFechamentov) refers to estados.o(.constdata) for .constdata
     estados.o(i._Z15loginFechamentov) refers to main.o(.data) for estadoLogin
+    estados.o(i._Z15loginFechamentov) refers to estados.o(.data) for usuarioLogando
     estados.o(i._Z16estInicializacaov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
     estados.o(i._Z16estInicializacaov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
     estados.o(i._Z16estInicializacaov) refers to pwm_t1ch2_a9.o(i._ZN3PWM12enableOutputEv) for PWM::enableOutput()
     estados.o(i._Z16estInicializacaov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
-    estados.o(i._Z16estInicializacaov) refers to fflt_clz.o(x$fpl$ffltu) for __aeabi_ui2f
-    estados.o(i._Z16estInicializacaov) refers to fdiv.o(x$fpl$fdiv) for __aeabi_fdiv
+    estados.o(i._Z16estInicializacaov) refers to lcd.o(i._Z12lcdWriteTempii) for lcdWriteTemp(int, int)
     estados.o(i._Z16estInicializacaov) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
-    estados.o(i._Z16estInicializacaov) refers to dmul.o(x$fpl$dmul) for __aeabi_dmul
-    estados.o(i._Z16estInicializacaov) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
-    estados.o(i._Z16estInicializacaov) refers to auxiliares.o(i._Z8temp2strPcf) for temp2str(char*, float)
-    estados.o(i._Z16estInicializacaov) refers to lcd.o(i._Z8lcdWritePKc) for lcdWrite(const char*)
     estados.o(i._Z16estInicializacaov) refers to drleqf.o(x$fpl$drleqf) for __aeabi_cdrcmple
     estados.o(i._Z16estInicializacaov) refers to dleqf.o(x$fpl$dleqf) for __aeabi_cdcmple
-    estados.o(i._Z16estInicializacaov) refers to estados.o(i._Z17reservatorioCheiov) for reservatorioCheio()
+    estados.o(i._Z16estInicializacaov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
+    estados.o(i._Z16estInicializacaov) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
     estados.o(i._Z16estInicializacaov) refers to main.o(.data) for subEstado
     estados.o(i._Z16estInicializacaov) refers to estados.o(i._Z11estProducaov) for estProducao()
+    estados.o(i._Z16estTrocaProducaov) refers to lcd.o(i._Z12clearDisplayv) for clearDisplay()
+    estados.o(i._Z16estTrocaProducaov) refers to lcd.o(i._Z11lcdWritePosPKcjj) for lcdWritePos(const char*, unsigned, unsigned)
+    estados.o(i._Z16estTrocaProducaov) refers to comarduino.o(i._Z12fechaValvulav) for fechaValvula()
     estados.o(i._Z16estTrocaProducaov) refers to estados.o(i._Z12statusPistaov) for statusPistao()
     estados.o(i._Z16estTrocaProducaov) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
     estados.o(i._Z16estTrocaProducaov) refers to estados.o(i._Z14desativaPistaov) for desativaPistao()
+    estados.o(i._Z16estTrocaProducaov) refers to estados.o(i._Z11ativaPistaov) for ativaPistao()
     estados.o(i._Z16estTrocaProducaov) refers to estados.o(i._Z17reservatorioVaziov) for reservatorioVazio()
     estados.o(i._Z16estTrocaProducaov) refers to main.o(.data) for subEstado
     estados.o(i._Z16estTrocaProducaov) refers to estados.o(i._Z16estInicializacaov) for estInicializacao()
-    estados.o(.ARM.exidx) refers to estados.o(i._Z15estLoginInicialv) for i._Z15estLoginInicialv
+    estados.o(i._Z18refreshQTDeTempLCDv) refers to lcd.o(i._Z9setCursorjj) for setCursor(unsigned, unsigned)
+    estados.o(i._Z18refreshQTDeTempLCDv) refers to lcd.o(i._Z11lcdWriteIntii) for lcdWriteInt(int, int)
+    estados.o(i._Z18refreshQTDeTempLCDv) refers to lcd.o(i._Z12lcdWriteTempii) for lcdWriteTemp(int, int)
+    estados.o(i._Z18refreshQTDeTempLCDv) refers to config_perifericos.o(i._Z8tempoRTCv) for tempoRTC()
+    estados.o(i._Z18refreshQTDeTempLCDv) refers to main.o(.data) for produtoAtual
+    estados.o(.ARM.exidx) refers to estados.o(i._Z18refreshQTDeTempLCDv) for i._Z18refreshQTDeTempLCDv
+    estados.o(.ARM.exidx) refers to estados.o(i._Z12estRelatoriov) for i._Z12estRelatoriov
+    estados.o(.ARM.exidx) refers to estados.o(i._Z13estFechamentov) for i._Z13estFechamentov
+    estados.o(.ARM.exidx) refers to estados.o(i._Z16estTrocaProducaov) for i._Z16estTrocaProducaov
     estados.o(.ARM.exidx) refers to estados.o(i._Z15loginFechamentov) for i._Z15loginFechamentov
     estados.o(.ARM.exidx) refers to estados.o(i._Z11estProducaov) for i._Z11estProducaov
     estados.o(.ARM.exidx) refers to estados.o(i._Z16estInicializacaov) for i._Z16estInicializacaov
     estados.o(.ARM.exidx) refers to estados.o(i._Z11estConfirmav) for i._Z11estConfirmav
+    estados.o(.ARM.exidx) refers to estados.o(i._Z15estLoginInicialv) for i._Z15estLoginInicialv
     estados.o(.ARM.exidx) refers to estados.o(i._Z13estEmergenciav) for i._Z13estEmergenciav
-    estados.o(.ARM.exidx) refers to estados.o(i._Z18estLoginFechamentov) for i._Z18estLoginFechamentov
-    estados.o(.ARM.exidx) refers to estados.o(i._Z16estTrocaProducaov) for i._Z16estTrocaProducaov
-    estados.o(.ARM.exidx) refers to estados.o(i._Z12estRelatoriov) for i._Z12estRelatoriov
-    estados.o(.ARM.exidx) refers to estados.o(i._Z13estFechamentov) for i._Z13estFechamentov
     startup_stm32f10x_md.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f10x_md.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f10x_md.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -284,11 +331,6 @@ Section Cross References
     faddsub_clz.o(x$fpl$fsub) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     faddsub_clz.o(x$fpl$fsub) refers to faddsub_clz.o(x$fpl$fadd) for _fadd1
     faddsub_clz.o(x$fpl$fsub) refers to fnaninf.o(x$fpl$fnaninf) for __fpl_fnaninf
-    fdiv.o(x$fpl$frdiv) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
-    fdiv.o(x$fpl$frdiv) refers to fdiv.o(x$fpl$fdiv) for _fdiv1
-    fdiv.o(x$fpl$fdiv) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
-    fdiv.o(x$fpl$fdiv) refers to fretinf.o(x$fpl$fretinf) for __fpl_fretinf
-    fdiv.o(x$fpl$fdiv) refers to fnaninf.o(x$fpl$fnaninf) for __fpl_fnaninf
     ffix.o(x$fpl$ffix) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
     ffix.o(x$fpl$ffix) refers to fnaninf.o(x$fpl$fnaninf) for __fpl_fnaninf
     ffix.o(x$fpl$ffixr) refers (Special) to usenofp.o(x$fpl$usenofp) for __I$use$fp
@@ -406,6 +448,7 @@ Section Cross References
     estados.o(.ARM.exidx) refers to estados.o(i._Z17reservatorioCheiov) for i._Z17reservatorioCheiov
     estados.o(.ARM.exidx) refers to estados.o(i._Z17reservatorioVaziov) for i._Z17reservatorioVaziov
     estados.o(.ARM.exidx) refers to estados.o(i._Z12statusPistaov) for i._Z12statusPistaov
+    estados.o(.ARM.exidx) refers to estados.o(i._Z11ativaPistaov) for i._Z11ativaPistaov
     estados.o(.ARM.exidx) refers to estados.o(i._Z14desativaPistaov) for i._Z14desativaPistaov
 
 
@@ -440,7 +483,9 @@ Removing Unused input sections from the image.
     Removing lcd.o(.revsh_text), (4 bytes).
     Removing lcd.o(.rrx_text), (6 bytes).
     Removing lcd.o(i._Z11lcdWriteInti), (82 bytes).
-    Removing lcd.o(i._Z11lcdWriteIntii), (74 bytes).
+    Removing lcd.o(i._Z8lcdWritePKc), (28 bytes).
+    Removing lcd.o(.ARM.exidx), (8 bytes).
+    Removing lcd.o(.ARM.exidx), (8 bytes).
     Removing lcd.o(.ARM.exidx), (8 bytes).
     Removing lcd.o(.ARM.exidx), (8 bytes).
     Removing lcd.o(.ARM.exidx), (8 bytes).
@@ -459,10 +504,10 @@ Removing Unused input sections from the image.
     Removing tecladomole.o(.ARM.exidx), (8 bytes).
     Removing tecladomole.o(.ARM.exidx), (8 bytes).
     Removing tecladomole.o(.ARM.exidx), (8 bytes).
-    Removing tecladomole.o(.ARM.exidx), (8 bytes).
     Removing comarduino.o(.rev16_text), (4 bytes).
     Removing comarduino.o(.revsh_text), (4 bytes).
     Removing comarduino.o(.rrx_text), (6 bytes).
+    Removing comarduino.o(.ARM.exidx), (8 bytes).
     Removing config_perifericos.o(.rev16_text), (4 bytes).
     Removing config_perifericos.o(.revsh_text), (4 bytes).
     Removing config_perifericos.o(.rrx_text), (6 bytes).
@@ -473,7 +518,9 @@ Removing Unused input sections from the image.
     Removing config_perifericos.o(.ARM.exidx), (8 bytes).
     Removing config_perifericos.o(.ARM.exidx), (8 bytes).
     Removing config_perifericos.o(.ARM.exidx), (8 bytes).
+    Removing config_perifericos.o(.ARM.exidx), (8 bytes).
     Removing auxiliares.o(i._Z20porcentagemFloat2StrPcf), (128 bytes).
+    Removing auxiliares.o(i._Z8temp2strPcf), (164 bytes).
     Removing auxiliares.o(.ARM.exidx), (8 bytes).
     Removing auxiliares.o(.ARM.exidx), (8 bytes).
     Removing login_e_config.o(.rev16_text), (4 bytes).
@@ -487,10 +534,6 @@ Removing Unused input sections from the image.
     Removing estados.o(.rev16_text), (4 bytes).
     Removing estados.o(.revsh_text), (4 bytes).
     Removing estados.o(.rrx_text), (6 bytes).
-    Removing estados.o(i._Z12estRelatoriov), (220 bytes).
-    Removing estados.o(i._Z13estFechamentov), (44 bytes).
-    Removing estados.o(i._Z16estTrocaProducaov), (168 bytes).
-    Removing estados.o(i._Z18estLoginFechamentov), (2 bytes).
     Removing estados.o(.ARM.exidx), (8 bytes).
     Removing estados.o(.ARM.exidx), (8 bytes).
     Removing estados.o(.ARM.exidx), (8 bytes).
@@ -511,8 +554,9 @@ Removing Unused input sections from the image.
     Removing estados.o(.ARM.exidx), (8 bytes).
     Removing estados.o(.ARM.exidx), (8 bytes).
     Removing estados.o(.ARM.exidx), (8 bytes).
+    Removing estados.o(.ARM.exidx), (8 bytes).
 
-98 unused section(s) (total 2086 bytes) removed from the image.
+99 unused section(s) (total 1802 bytes) removed from the image.
 
 ==============================================================================
 
@@ -522,55 +566,55 @@ Image Symbol Table
 
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
     ../clib/arm_runtime.c                    0x00000000   Number         0  init_aeabi.o ABSOLUTE
     ../clib/arm_runtime.c                    0x00000000   Number         0  init_aeabi.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  rt_memcpy_w.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  strlen.o ABSOLUTE
@@ -587,7 +631,6 @@ Image Symbol Table
     ../fplib/drleqf.s                        0x00000000   Number         0  drleqf.o ABSOLUTE
     ../fplib/f2d.s                           0x00000000   Number         0  f2d.o ABSOLUTE
     ../fplib/faddsub.s                       0x00000000   Number         0  faddsub_clz.o ABSOLUTE
-    ../fplib/fdiv.s                          0x00000000   Number         0  fdiv.o ABSOLUTE
     ../fplib/ffix.s                          0x00000000   Number         0  ffix.o ABSOLUTE
     ../fplib/fflt.s                          0x00000000   Number         0  fflt_clz.o ABSOLUTE
     ../fplib/fmul.s                          0x00000000   Number         0  fmul.o ABSOLUTE
@@ -676,92 +719,99 @@ Image Symbol Table
     .text                                    0x08000382   Section        0  indicate_semi.o(.text)
     .text                                    0x08000384   Section        0  sys_exit.o(.text)
     i.ADC1_2_IRQHandler                      0x08000390   Section        0  main.o(i.ADC1_2_IRQHandler)
-    i.SetSysClock                            0x08000468   Section        0  system_stm32f10x.o(i.SetSysClock)
-    SetSysClock                              0x08000469   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
-    i.SetSysClockTo72                        0x08000470   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
-    SetSysClockTo72                          0x08000471   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
-    i.SystemInit                             0x08000550   Section        0  system_stm32f10x.o(i.SystemInit)
-    i._Z10lcdComandoc                        0x080005b0   Section        0  lcd.o(i._Z10lcdComandoc)
-    i._Z11configA8MCOv                       0x080005d4   Section        0  config_perifericos.o(i._Z11configA8MCOv)
-    i._Z11estConfirmav                       0x08000614   Section        0  estados.o(i._Z11estConfirmav)
-    i._Z11estProducaov                       0x08000738   Section        0  estados.o(i._Z11estProducaov)
-    i._Z11ij_to_char2ii                      0x08000844   Section        0  tecladomole.o(i._Z11ij_to_char2ii)
-    i._Z11lcdWritePosPKcjj                   0x080008ba   Section        0  lcd.o(i._Z11lcdWritePosPKcjj)
-    i._Z11le_teclado2v                       0x080008fc   Section        0  tecladomole.o(i._Z11le_teclado2v)
-    i._Z11pedeUsuariov                       0x08000930   Section        0  login_e_config.o(i._Z11pedeUsuariov)
-    i._Z11pulseEnablev                       0x08000a6c   Section        0  lcd.o(i._Z11pulseEnablev)
-    i._Z11trocaEstadoPFvvE                   0x08000a8c   Section        0  main.o(i._Z11trocaEstadoPFvvE)
-    i._Z12clearDisplayv                      0x08000ac8   Section        0  lcd.o(i._Z12clearDisplayv)
-    i._Z12lcdWritecharc                      0x08000ad8   Section        0  lcd.o(i._Z12lcdWritecharc)
-    i._Z12statusPistaov                      0x08000afc   Section        0  estados.o(i._Z12statusPistaov)
-    i._Z13estEmergenciav                     0x08000b0c   Section        0  estados.o(i._Z13estEmergenciav)
-    i._Z14atraso40us_lcdv                    0x08000b94   Section        0  lcd.o(i._Z14atraso40us_lcdv)
-    i._Z14configuraClockv                    0x08000be0   Section        0  config_perifericos.o(i._Z14configuraClockv)
-    i._Z14desativaPistaov                    0x08000c04   Section        0  estados.o(i._Z14desativaPistaov)
-    i._Z15atraso1m65s_lcdv                   0x08000c14   Section        0  lcd.o(i._Z15atraso1m65s_lcdv)
-    i._Z15estLoginInicialv                   0x08000c64   Section        0  estados.o(i._Z15estLoginInicialv)
-    i._Z15loginFechamentov                   0x08000c90   Section        0  estados.o(i._Z15loginFechamentov)
-    i._Z16atraso_debounce2v                  0x08000f2c   Section        0  tecladomole.o(i._Z16atraso_debounce2v)
-    i._Z16estInicializacaov                  0x08000f7c   Section        0  estados.o(i._Z16estInicializacaov)
-    i._Z16selecionaProdutov                  0x0800112c   Section        0  login_e_config.o(i._Z16selecionaProdutov)
-    i._Z17reservatorioCheiov                 0x080012b0   Section        0  estados.o(i._Z17reservatorioCheiov)
-    i._Z17reservatorioVaziov                 0x080012c0   Section        0  estados.o(i._Z17reservatorioVaziov)
-    i._Z25configura_portaB_teclado2v         0x080012d0   Section        0  tecladomole.o(i._Z25configura_portaB_teclado2v)
-    i._Z8lcdWritePKc                         0x0800132c   Section        0  lcd.o(i._Z8lcdWritePKc)
-    i._Z8temp2strPcf                         0x08001348   Section        0  auxiliares.o(i._Z8temp2strPcf)
-    i._Z8tempoRTCv                           0x080013ec   Section        0  config_perifericos.o(i._Z8tempoRTCv)
-    i._Z9configADCv                          0x08001400   Section        0  config_perifericos.o(i._Z9configADCv)
-    i._Z9configRTCv                          0x080014c4   Section        0  config_perifericos.o(i._Z9configRTCv)
-    i._Z9debounce2ii                         0x08001534   Section        0  tecladomole.o(i._Z9debounce2ii)
-    i._Z9lcdConfigv                          0x08001614   Section        0  lcd.o(i._Z9lcdConfigv)
-    i._Z9pedeSenhai                          0x08001690   Section        0  login_e_config.o(i._Z9pedeSenhai)
-    i._Z9setCursorjj                         0x080017e8   Section        0  lcd.o(i._Z9setCursorjj)
-    i._ZN3PWM12enableOutputEv                0x08001810   Section        0  pwm_t1ch2_a9.o(i._ZN3PWM12enableOutputEv)
-    i._ZN3PWM12setDutyCycleEf                0x08001824   Section        0  pwm_t1ch2_a9.o(i._ZN3PWM12setDutyCycleEf)
-    i._ZN3PWMC1Ev                            0x080018a0   Section        0  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
-    i.__sti___8_main_cpp_ea587f0a            0x08001908   Section        0  main.o(i.__sti___8_main_cpp_ea587f0a)
-    __sti___8_main_cpp_ea587f0a              0x08001909   Thumb Code    10  main.o(i.__sti___8_main_cpp_ea587f0a)
-    i.main                                   0x08001918   Section        0  main.o(i.main)
-    x$fpl$d2f                                0x0800198c   Section       98  d2f.o(x$fpl$d2f)
-    x$fpl$dadd                               0x080019f0   Section      336  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x08001a01   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$dcmpinf                            0x08001b40   Section       24  dcmpi.o(x$fpl$dcmpinf)
-    x$fpl$ddiv                               0x08001b58   Section      688  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x08001b5f   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$dfix                               0x08001e08   Section       94  dfix.o(x$fpl$dfix)
-    x$fpl$dflt                               0x08001e66   Section       46  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dleqf                              0x08001e94   Section      120  dleqf.o(x$fpl$dleqf)
-    x$fpl$dmul                               0x08001f0c   Section      340  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x08002060   Section      156  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x080020fc   Section       12  dretinf.o(x$fpl$dretinf)
-    x$fpl$drleqf                             0x08002108   Section      108  drleqf.o(x$fpl$drleqf)
-    x$fpl$dsub                               0x08002174   Section      468  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x08002185   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$f2d                                0x08002348   Section       86  f2d.o(x$fpl$f2d)
-    x$fpl$fadd                               0x080023a0   Section      196  faddsub_clz.o(x$fpl$fadd)
-    _fadd1                                   0x080023af   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    x$fpl$fdiv                               0x08002464   Section      388  fdiv.o(x$fpl$fdiv)
-    _fdiv1                                   0x08002465   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    x$fpl$ffix                               0x080025e8   Section       54  ffix.o(x$fpl$ffix)
-    x$fpl$ffltu                              0x08002620   Section       38  fflt_clz.o(x$fpl$ffltu)
-    x$fpl$fmul                               0x08002648   Section      258  fmul.o(x$fpl$fmul)
-    x$fpl$fnaninf                            0x0800274a   Section      140  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fretinf                            0x080027d6   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$fsub                               0x080027e0   Section      234  faddsub_clz.o(x$fpl$fsub)
-    _fsub1                                   0x080027ef   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    x$fpl$usenofp                            0x080028ca   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x080028cc   Section      300  login_e_config.o(.constdata)
-    .constdata                               0x080029f8   Section       21  estados.o(.constdata)
-    .init_array                              0x08002a30   Section        4  main.o(.init_array)
-    .init_array                              0x08002a34   Section        0  init_aeabi.o(.init_array)
-    .data                                    0x20000000   Section       84  main.o(.data)
-    .data                                    0x20000054   Section        3  login_e_config.o(.data)
-    .bss                                     0x20000058   Section       96  libspace.o(.bss)
-    HEAP                                     0x200000b8   Section      512  startup_stm32f10x_md.o(HEAP)
-    Heap_Mem                                 0x200000b8   Data         512  startup_stm32f10x_md.o(HEAP)
-    STACK                                    0x200002b8   Section     1024  startup_stm32f10x_md.o(STACK)
-    Stack_Mem                                0x200002b8   Data        1024  startup_stm32f10x_md.o(STACK)
-    __initial_sp                             0x200006b8   Data           0  startup_stm32f10x_md.o(STACK)
+    i.SetSysClock                            0x080004e8   Section        0  system_stm32f10x.o(i.SetSysClock)
+    SetSysClock                              0x080004e9   Thumb Code     8  system_stm32f10x.o(i.SetSysClock)
+    i.SetSysClockTo72                        0x080004f0   Section        0  system_stm32f10x.o(i.SetSysClockTo72)
+    SetSysClockTo72                          0x080004f1   Thumb Code   214  system_stm32f10x.o(i.SetSysClockTo72)
+    i.SystemInit                             0x080005d0   Section        0  system_stm32f10x.o(i.SystemInit)
+    i._Z10lcdComandoc                        0x08000630   Section        0  lcd.o(i._Z10lcdComandoc)
+    i._Z11ativaPistaov                       0x0800065c   Section        0  estados.o(i._Z11ativaPistaov)
+    i._Z11configA8MCOv                       0x0800066c   Section        0  config_perifericos.o(i._Z11configA8MCOv)
+    i._Z11configGPIOsv                       0x080006ac   Section        0  config_perifericos.o(i._Z11configGPIOsv)
+    i._Z11estConfirmav                       0x0800076c   Section        0  estados.o(i._Z11estConfirmav)
+    i._Z11estProducaov                       0x08000884   Section        0  estados.o(i._Z11estProducaov)
+    i._Z11ij_to_char2ii                      0x08000ad8   Section        0  tecladomole.o(i._Z11ij_to_char2ii)
+    i._Z11lcdWriteIntii                      0x08000b4e   Section        0  lcd.o(i._Z11lcdWriteIntii)
+    i._Z11lcdWritePosPKcjj                   0x08000b98   Section        0  lcd.o(i._Z11lcdWritePosPKcjj)
+    i._Z11le_teclado2v                       0x08000bda   Section        0  tecladomole.o(i._Z11le_teclado2v)
+    i._Z11pedeUsuariov                       0x08000c10   Section        0  login_e_config.o(i._Z11pedeUsuariov)
+    i._Z11pulseEnablev                       0x08000d4c   Section        0  lcd.o(i._Z11pulseEnablev)
+    i._Z11trocaEstadoPFvvE                   0x08000d6c   Section        0  main.o(i._Z11trocaEstadoPFvvE)
+    i._Z12clearDisplayv                      0x08000da8   Section        0  lcd.o(i._Z12clearDisplayv)
+    i._Z12estRelatoriov                      0x08000db8   Section        0  estados.o(i._Z12estRelatoriov)
+    i._Z12fechaValvulav                      0x08000eac   Section        0  comarduino.o(i._Z12fechaValvulav)
+    i._Z12lcdWriteTempii                     0x08000ed4   Section        0  lcd.o(i._Z12lcdWriteTempii)
+    i._Z12lcdWriteTempv                      0x08000ee8   Section        0  lcd.o(i._Z12lcdWriteTempv)
+    i._Z12lcdWritecharc                      0x08001060   Section        0  lcd.o(i._Z12lcdWritecharc)
+    i._Z12statusPistaov                      0x0800108c   Section        0  estados.o(i._Z12statusPistaov)
+    i._Z13estEmergenciav                     0x0800109c   Section        0  estados.o(i._Z13estEmergenciav)
+    i._Z13estFechamentov                     0x08001174   Section        0  estados.o(i._Z13estFechamentov)
+    i._Z14atraso40us_lcdv                    0x08001278   Section        0  lcd.o(i._Z14atraso40us_lcdv)
+    i._Z14configuraClockv                    0x080012c4   Section        0  config_perifericos.o(i._Z14configuraClockv)
+    i._Z14desativaPistaov                    0x080012e8   Section        0  estados.o(i._Z14desativaPistaov)
+    i._Z15atraso1m65s_lcdv                   0x080012f8   Section        0  lcd.o(i._Z15atraso1m65s_lcdv)
+    i._Z15estLoginInicialv                   0x08001348   Section        0  estados.o(i._Z15estLoginInicialv)
+    i._Z15loginFechamentov                   0x080013b8   Section        0  estados.o(i._Z15loginFechamentov)
+    i._Z16atraso_debounce2v                  0x08001734   Section        0  tecladomole.o(i._Z16atraso_debounce2v)
+    i._Z16estInicializacaov                  0x08001784   Section        0  estados.o(i._Z16estInicializacaov)
+    i._Z16estTrocaProducaov                  0x080018e0   Section        0  estados.o(i._Z16estTrocaProducaov)
+    i._Z16selecionaProdutov                  0x080019f4   Section        0  login_e_config.o(i._Z16selecionaProdutov)
+    i._Z17reservatorioCheiov                 0x08001b78   Section        0  estados.o(i._Z17reservatorioCheiov)
+    i._Z17reservatorioVaziov                 0x08001b88   Section        0  estados.o(i._Z17reservatorioVaziov)
+    i._Z18refreshQTDeTempLCDv                0x08001b98   Section        0  estados.o(i._Z18refreshQTDeTempLCDv)
+    i._Z8tempoRTCv                           0x08001bd4   Section        0  config_perifericos.o(i._Z8tempoRTCv)
+    i._Z9configADCv                          0x08001be8   Section        0  config_perifericos.o(i._Z9configADCv)
+    i._Z9configRTCv                          0x08001cac   Section        0  config_perifericos.o(i._Z9configRTCv)
+    i._Z9debounce2ii                         0x08001d1c   Section        0  tecladomole.o(i._Z9debounce2ii)
+    i._Z9lcdConfigv                          0x08001dfc   Section        0  lcd.o(i._Z9lcdConfigv)
+    i._Z9pedeSenhai                          0x08001e20   Section        0  login_e_config.o(i._Z9pedeSenhai)
+    i._Z9setCursorjj                         0x08001f78   Section        0  lcd.o(i._Z9setCursorjj)
+    i._ZN3PWM12enableOutputEv                0x08001fa0   Section        0  pwm_t1ch2_a9.o(i._ZN3PWM12enableOutputEv)
+    i._ZN3PWM12setDutyCycleEf                0x08001fb4   Section        0  pwm_t1ch2_a9.o(i._ZN3PWM12setDutyCycleEf)
+    i._ZN3PWMC1Ev                            0x08002030   Section        0  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
+    i.__sti___8_main_cpp_ea587f0a            0x08002098   Section        0  main.o(i.__sti___8_main_cpp_ea587f0a)
+    __sti___8_main_cpp_ea587f0a              0x08002099   Thumb Code    10  main.o(i.__sti___8_main_cpp_ea587f0a)
+    i.main                                   0x080020a8   Section        0  main.o(i.main)
+    x$fpl$d2f                                0x08002180   Section       98  d2f.o(x$fpl$d2f)
+    x$fpl$dadd                               0x080021e4   Section      336  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x080021f5   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dcmpinf                            0x08002334   Section       24  dcmpi.o(x$fpl$dcmpinf)
+    x$fpl$ddiv                               0x0800234c   Section      688  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x08002353   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$dfix                               0x080025fc   Section       94  dfix.o(x$fpl$dfix)
+    x$fpl$dflt                               0x0800265a   Section       46  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dleqf                              0x08002688   Section      120  dleqf.o(x$fpl$dleqf)
+    x$fpl$dmul                               0x08002700   Section      340  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x08002854   Section      156  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x080028f0   Section       12  dretinf.o(x$fpl$dretinf)
+    x$fpl$drleqf                             0x080028fc   Section      108  drleqf.o(x$fpl$drleqf)
+    x$fpl$dsub                               0x08002968   Section      468  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x08002979   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$f2d                                0x08002b3c   Section       86  f2d.o(x$fpl$f2d)
+    x$fpl$fadd                               0x08002b94   Section      196  faddsub_clz.o(x$fpl$fadd)
+    _fadd1                                   0x08002ba3   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    x$fpl$ffix                               0x08002c58   Section       54  ffix.o(x$fpl$ffix)
+    x$fpl$ffltu                              0x08002c90   Section       38  fflt_clz.o(x$fpl$ffltu)
+    x$fpl$fmul                               0x08002cb8   Section      258  fmul.o(x$fpl$fmul)
+    x$fpl$fnaninf                            0x08002dba   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x08002e46   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$fsub                               0x08002e50   Section      234  faddsub_clz.o(x$fpl$fsub)
+    _fsub1                                   0x08002e5f   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    x$fpl$usenofp                            0x08002f3a   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x08002f3c   Section      300  login_e_config.o(.constdata)
+    .constdata                               0x08003068   Section       21  estados.o(.constdata)
+    .init_array                              0x080030a0   Section        4  main.o(.init_array)
+    .init_array                              0x080030a4   Section        0  init_aeabi.o(.init_array)
+    .data                                    0x20000000   Section       92  main.o(.data)
+    .data                                    0x2000005c   Section        3  login_e_config.o(.data)
+    .data                                    0x20000060   Section        8  estados.o(.data)
+    .bss                                     0x20000068   Section       40  lcd.o(.bss)
+    .bss                                     0x20000090   Section       96  libspace.o(.bss)
+    HEAP                                     0x200000f0   Section      512  startup_stm32f10x_md.o(HEAP)
+    Heap_Mem                                 0x200000f0   Data         512  startup_stm32f10x_md.o(HEAP)
+    STACK                                    0x200002f0   Section     1024  startup_stm32f10x_md.o(STACK)
+    Stack_Mem                                0x200002f0   Data        1024  startup_stm32f10x_md.o(STACK)
+    __initial_sp                             0x200006f0   Data           0  startup_stm32f10x_md.o(STACK)
 
     Global Symbols
 
@@ -920,113 +970,123 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x08000381   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x08000383   Thumb Code     0  indicate_semi.o(.text)
     _sys_exit                                0x08000385   Thumb Code     8  sys_exit.o(.text)
-    ADC1_2_IRQHandler                        0x08000391   Thumb Code   180  main.o(i.ADC1_2_IRQHandler)
-    SystemInit                               0x08000551   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
-    lcdComando(char)                         0x080005b1   Thumb Code    26  lcd.o(i._Z10lcdComandoc)
-    configA8MCO()                            0x080005d5   Thumb Code    56  config_perifericos.o(i._Z11configA8MCOv)
-    estConfirma()                            0x08000615   Thumb Code   188  estados.o(i._Z11estConfirmav)
-    estProducao()                            0x08000739   Thumb Code   242  estados.o(i._Z11estProducaov)
-    ij_to_char2(int, int)                    0x08000845   Thumb Code   118  tecladomole.o(i._Z11ij_to_char2ii)
-    lcdWritePos(const char*, unsigned, unsigned) 0x080008bb   Thumb Code    66  lcd.o(i._Z11lcdWritePosPKcjj)
-    le_teclado2()                            0x080008fd   Thumb Code    52  tecladomole.o(i._Z11le_teclado2v)
-    pedeUsuario()                            0x08000931   Thumb Code   290  login_e_config.o(i._Z11pedeUsuariov)
-    pulseEnable()                            0x08000a6d   Thumb Code    28  lcd.o(i._Z11pulseEnablev)
-    trocaEstado(void(*)())                   0x08000a8d   Thumb Code    34  main.o(i._Z11trocaEstadoPFvvE)
-    clearDisplay()                           0x08000ac9   Thumb Code    14  lcd.o(i._Z12clearDisplayv)
-    lcdWritechar(char)                       0x08000ad9   Thumb Code    26  lcd.o(i._Z12lcdWritecharc)
-    statusPistao()                           0x08000afd   Thumb Code    12  estados.o(i._Z12statusPistaov)
-    estEmergencia()                          0x08000b0d   Thumb Code    82  estados.o(i._Z13estEmergenciav)
-    atraso40us_lcd()                         0x08000b95   Thumb Code    72  lcd.o(i._Z14atraso40us_lcdv)
-    configuraClock()                         0x08000be1   Thumb Code    32  config_perifericos.o(i._Z14configuraClockv)
-    desativaPistao()                         0x08000c05   Thumb Code    10  estados.o(i._Z14desativaPistaov)
-    atraso1m65s_lcd()                        0x08000c15   Thumb Code    74  lcd.o(i._Z15atraso1m65s_lcdv)
-    estLoginInicial()                        0x08000c65   Thumb Code    38  estados.o(i._Z15estLoginInicialv)
-    loginFechamento()                        0x08000c91   Thumb Code   562  estados.o(i._Z15loginFechamentov)
-    atraso_debounce2()                       0x08000f2d   Thumb Code    74  tecladomole.o(i._Z16atraso_debounce2v)
-    estInicializacao()                       0x08000f7d   Thumb Code   324  estados.o(i._Z16estInicializacaov)
-    selecionaProduto()                       0x0800112d   Thumb Code   324  login_e_config.o(i._Z16selecionaProdutov)
-    reservatorioCheio()                      0x080012b1   Thumb Code    10  estados.o(i._Z17reservatorioCheiov)
-    reservatorioVazio()                      0x080012c1   Thumb Code    10  estados.o(i._Z17reservatorioVaziov)
-    configura_portaB_teclado2()              0x080012d1   Thumb Code    76  tecladomole.o(i._Z25configura_portaB_teclado2v)
-    lcdWrite(const char*)                    0x0800132d   Thumb Code    28  lcd.o(i._Z8lcdWritePKc)
-    temp2str(char*, float)                   0x08001349   Thumb Code   146  auxiliares.o(i._Z8temp2strPcf)
-    tempoRTC()                               0x080013ed   Thumb Code    16  config_perifericos.o(i._Z8tempoRTCv)
-    configADC()                              0x08001401   Thumb Code   178  config_perifericos.o(i._Z9configADCv)
-    configRTC()                              0x080014c5   Thumb Code    98  config_perifericos.o(i._Z9configRTCv)
-    debounce2(int, int)                      0x08001535   Thumb Code   218  tecladomole.o(i._Z9debounce2ii)
-    lcdConfig()                              0x08001615   Thumb Code   102  lcd.o(i._Z9lcdConfigv)
-    pedeSenha(int)                           0x08001691   Thumb Code   310  login_e_config.o(i._Z9pedeSenhai)
-    setCursor(unsigned, unsigned)            0x080017e9   Thumb Code    40  lcd.o(i._Z9setCursorjj)
-    PWM::enableOutput()                      0x08001811   Thumb Code    14  pwm_t1ch2_a9.o(i._ZN3PWM12enableOutputEv)
-    PWM::setDutyCycle(float)                 0x08001825   Thumb Code   110  pwm_t1ch2_a9.o(i._ZN3PWM12setDutyCycleEf)
-    PWM::PWM()                               0x080018a1   Thumb Code    96  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
-    PWM::PWM__sub_object()                   0x080018a1   Thumb Code     0  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
-    main                                     0x08001919   Thumb Code   100  main.o(i.main)
-    __aeabi_d2f                              0x0800198d   Thumb Code     0  d2f.o(x$fpl$d2f)
-    _d2f                                     0x0800198d   Thumb Code    98  d2f.o(x$fpl$d2f)
-    __aeabi_dadd                             0x080019f1   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x080019f1   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __fpl_dcmp_Inf                           0x08001b41   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
-    __aeabi_ddiv                             0x08001b59   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x08001b59   Thumb Code   552  ddiv.o(x$fpl$ddiv)
-    __aeabi_d2iz                             0x08001e09   Thumb Code     0  dfix.o(x$fpl$dfix)
-    _dfix                                    0x08001e09   Thumb Code    94  dfix.o(x$fpl$dfix)
-    __aeabi_i2d                              0x08001e67   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x08001e67   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __aeabi_cdcmple                          0x08001e95   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    _dcmple                                  0x08001e95   Thumb Code   120  dleqf.o(x$fpl$dleqf)
-    __fpl_dcmple_InfNaN                      0x08001ef7   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    __aeabi_dmul                             0x08001f0d   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x08001f0d   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x08002061   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x080020fd   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_cdrcmple                         0x08002109   Thumb Code     0  drleqf.o(x$fpl$drleqf)
-    _drcmple                                 0x08002109   Thumb Code   108  drleqf.o(x$fpl$drleqf)
-    __aeabi_dsub                             0x08002175   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x08002175   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
-    __aeabi_f2d                              0x08002349   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x08002349   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __aeabi_fadd                             0x080023a1   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
-    _fadd                                    0x080023a1   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
-    __aeabi_fdiv                             0x08002465   Thumb Code     0  fdiv.o(x$fpl$fdiv)
-    _fdiv                                    0x08002465   Thumb Code   384  fdiv.o(x$fpl$fdiv)
-    __aeabi_f2iz                             0x080025e9   Thumb Code     0  ffix.o(x$fpl$ffix)
-    _ffix                                    0x080025e9   Thumb Code    54  ffix.o(x$fpl$ffix)
-    __aeabi_ui2f                             0x08002621   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
-    _ffltu                                   0x08002621   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
-    __aeabi_fmul                             0x08002649   Thumb Code     0  fmul.o(x$fpl$fmul)
-    _fmul                                    0x08002649   Thumb Code   258  fmul.o(x$fpl$fmul)
-    __fpl_fnaninf                            0x0800274b   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    __fpl_fretinf                            0x080027d7   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    __aeabi_fsub                             0x080027e1   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
-    _fsub                                    0x080027e1   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
-    __I$use$fp                               0x080028ca   Number         0  usenofp.o(x$fpl$usenofp)
-    Region$$Table$$Base                      0x08002a10   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08002a30   Number         0  anon$$obj.o(Region$$Table)
-    SHT$$INIT_ARRAY$$Base                    0x08002a30   Number         0  main.o(.init_array)
-    SHT$$INIT_ARRAY$$Limit                   0x08002a34   Number         0  init_aeabi.o(.init_array)
+    ADC1_2_IRQHandler                        0x08000391   Thumb Code   270  main.o(i.ADC1_2_IRQHandler)
+    SystemInit                               0x080005d1   Thumb Code    78  system_stm32f10x.o(i.SystemInit)
+    lcdComando(char)                         0x08000631   Thumb Code    36  lcd.o(i._Z10lcdComandoc)
+    ativaPistao()                            0x0800065d   Thumb Code    10  estados.o(i._Z11ativaPistaov)
+    configA8MCO()                            0x0800066d   Thumb Code    56  config_perifericos.o(i._Z11configA8MCOv)
+    configGPIOs()                            0x080006ad   Thumb Code   158  config_perifericos.o(i._Z11configGPIOsv)
+    estConfirma()                            0x0800076d   Thumb Code   180  estados.o(i._Z11estConfirmav)
+    estProducao()                            0x08000885   Thumb Code   498  estados.o(i._Z11estProducaov)
+    ij_to_char2(int, int)                    0x08000ad9   Thumb Code   118  tecladomole.o(i._Z11ij_to_char2ii)
+    lcdWriteInt(int, int)                    0x08000b4f   Thumb Code    74  lcd.o(i._Z11lcdWriteIntii)
+    lcdWritePos(const char*, unsigned, unsigned) 0x08000b99   Thumb Code    66  lcd.o(i._Z11lcdWritePosPKcjj)
+    le_teclado2()                            0x08000bdb   Thumb Code    52  tecladomole.o(i._Z11le_teclado2v)
+    pedeUsuario()                            0x08000c11   Thumb Code   290  login_e_config.o(i._Z11pedeUsuariov)
+    pulseEnable()                            0x08000d4d   Thumb Code    28  lcd.o(i._Z11pulseEnablev)
+    trocaEstado(void(*)())                   0x08000d6d   Thumb Code    34  main.o(i._Z11trocaEstadoPFvvE)
+    clearDisplay()                           0x08000da9   Thumb Code    14  lcd.o(i._Z12clearDisplayv)
+    estRelatorio()                           0x08000db9   Thumb Code   162  estados.o(i._Z12estRelatoriov)
+    fechaValvula()                           0x08000ead   Thumb Code    32  comarduino.o(i._Z12fechaValvulav)
+    lcdWriteTemp(int, int)                   0x08000ed5   Thumb Code    20  lcd.o(i._Z12lcdWriteTempii)
+    lcdWriteTemp()                           0x08000ee9   Thumb Code   340  lcd.o(i._Z12lcdWriteTempv)
+    lcdWritechar(char)                       0x08001061   Thumb Code    36  lcd.o(i._Z12lcdWritecharc)
+    statusPistao()                           0x0800108d   Thumb Code    12  estados.o(i._Z12statusPistaov)
+    estEmergencia()                          0x0800109d   Thumb Code   148  estados.o(i._Z13estEmergenciav)
+    estFechamento()                          0x08001175   Thumb Code   186  estados.o(i._Z13estFechamentov)
+    atraso40us_lcd()                         0x08001279   Thumb Code    72  lcd.o(i._Z14atraso40us_lcdv)
+    configuraClock()                         0x080012c5   Thumb Code    32  config_perifericos.o(i._Z14configuraClockv)
+    desativaPistao()                         0x080012e9   Thumb Code    10  estados.o(i._Z14desativaPistaov)
+    atraso1m65s_lcd()                        0x080012f9   Thumb Code    74  lcd.o(i._Z15atraso1m65s_lcdv)
+    estLoginInicial()                        0x08001349   Thumb Code    86  estados.o(i._Z15estLoginInicialv)
+    loginFechamento()                        0x080013b9   Thumb Code   762  estados.o(i._Z15loginFechamentov)
+    atraso_debounce2()                       0x08001735   Thumb Code    74  tecladomole.o(i._Z16atraso_debounce2v)
+    estInicializacao()                       0x08001785   Thumb Code   250  estados.o(i._Z16estInicializacaov)
+    estTrocaProducao()                       0x080018e1   Thumb Code   204  estados.o(i._Z16estTrocaProducaov)
+    selecionaProduto()                       0x080019f5   Thumb Code   324  login_e_config.o(i._Z16selecionaProdutov)
+    reservatorioCheio()                      0x08001b79   Thumb Code    10  estados.o(i._Z17reservatorioCheiov)
+    reservatorioVazio()                      0x08001b89   Thumb Code    12  estados.o(i._Z17reservatorioVaziov)
+    refreshQTDeTempLCD()                     0x08001b99   Thumb Code    46  estados.o(i._Z18refreshQTDeTempLCDv)
+    tempoRTC()                               0x08001bd5   Thumb Code    16  config_perifericos.o(i._Z8tempoRTCv)
+    configADC()                              0x08001be9   Thumb Code   178  config_perifericos.o(i._Z9configADCv)
+    configRTC()                              0x08001cad   Thumb Code    98  config_perifericos.o(i._Z9configRTCv)
+    debounce2(int, int)                      0x08001d1d   Thumb Code   218  tecladomole.o(i._Z9debounce2ii)
+    lcdConfig()                              0x08001dfd   Thumb Code    36  lcd.o(i._Z9lcdConfigv)
+    pedeSenha(int)                           0x08001e21   Thumb Code   310  login_e_config.o(i._Z9pedeSenhai)
+    setCursor(unsigned, unsigned)            0x08001f79   Thumb Code    40  lcd.o(i._Z9setCursorjj)
+    PWM::enableOutput()                      0x08001fa1   Thumb Code    14  pwm_t1ch2_a9.o(i._ZN3PWM12enableOutputEv)
+    PWM::setDutyCycle(float)                 0x08001fb5   Thumb Code   110  pwm_t1ch2_a9.o(i._ZN3PWM12setDutyCycleEf)
+    PWM::PWM()                               0x08002031   Thumb Code    96  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
+    PWM::PWM__sub_object()                   0x08002031   Thumb Code     0  pwm_t1ch2_a9.o(i._ZN3PWMC1Ev)
+    main                                     0x080020a9   Thumb Code   176  main.o(i.main)
+    __aeabi_d2f                              0x08002181   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x08002181   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __aeabi_dadd                             0x080021e5   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x080021e5   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __fpl_dcmp_Inf                           0x08002335   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
+    __aeabi_ddiv                             0x0800234d   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x0800234d   Thumb Code   552  ddiv.o(x$fpl$ddiv)
+    __aeabi_d2iz                             0x080025fd   Thumb Code     0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x080025fd   Thumb Code    94  dfix.o(x$fpl$dfix)
+    __aeabi_i2d                              0x0800265b   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x0800265b   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_cdcmple                          0x08002689   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    _dcmple                                  0x08002689   Thumb Code   120  dleqf.o(x$fpl$dleqf)
+    __fpl_dcmple_InfNaN                      0x080026eb   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    __aeabi_dmul                             0x08002701   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x08002701   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x08002855   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x080028f1   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_cdrcmple                         0x080028fd   Thumb Code     0  drleqf.o(x$fpl$drleqf)
+    _drcmple                                 0x080028fd   Thumb Code   108  drleqf.o(x$fpl$drleqf)
+    __aeabi_dsub                             0x08002969   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x08002969   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    __aeabi_f2d                              0x08002b3d   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x08002b3d   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __aeabi_fadd                             0x08002b95   Thumb Code     0  faddsub_clz.o(x$fpl$fadd)
+    _fadd                                    0x08002b95   Thumb Code   196  faddsub_clz.o(x$fpl$fadd)
+    __aeabi_f2iz                             0x08002c59   Thumb Code     0  ffix.o(x$fpl$ffix)
+    _ffix                                    0x08002c59   Thumb Code    54  ffix.o(x$fpl$ffix)
+    __aeabi_ui2f                             0x08002c91   Thumb Code     0  fflt_clz.o(x$fpl$ffltu)
+    _ffltu                                   0x08002c91   Thumb Code    38  fflt_clz.o(x$fpl$ffltu)
+    __aeabi_fmul                             0x08002cb9   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08002cb9   Thumb Code   258  fmul.o(x$fpl$fmul)
+    __fpl_fnaninf                            0x08002dbb   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x08002e47   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    __aeabi_fsub                             0x08002e51   Thumb Code     0  faddsub_clz.o(x$fpl$fsub)
+    _fsub                                    0x08002e51   Thumb Code   234  faddsub_clz.o(x$fpl$fsub)
+    __I$use$fp                               0x08002f3a   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x08003080   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080030a0   Number         0  anon$$obj.o(Region$$Table)
+    SHT$$INIT_ARRAY$$Base                    0x080030a0   Number         0  main.o(.init_array)
+    SHT$$INIT_ARRAY$$Limit                   0x080030a4   Number         0  init_aeabi.o(.init_array)
     aquecedor                                0x20000000   Data           1  main.o(.data)
     e                                        0x20000004   Data           8  main.o(.data)
     unidadesProduzidas                       0x2000000c   Data           8  main.o(.data)
     produtoAtual                             0x20000014   Data           4  main.o(.data)
-    produtoNovo                              0x20000018   Data           4  main.o(.data)
-    ultTecla                                 0x2000001c   Data           1  main.o(.data)
-    tempoUltMudancaTela                      0x20000020   Data           4  main.o(.data)
-    subEstadoAnterior                        0x20000024   Data           4  main.o(.data)
-    subEstado                                0x20000028   Data           4  main.o(.data)
-    estadoLogin                              0x2000002c   Data           4  main.o(.data)
-    loginUser                                0x20000030   Data           7  main.o(.data)
-    loginPasswd                              0x20000037   Data           6  main.o(.data)
-    tempoAberto                              0x20000040   Data           4  main.o(.data)
-    tempoFechado                             0x20000044   Data           4  main.o(.data)
-    funEstadoAnterior                        0x20000048   Data           4  main.o(.data)
-    funEstado                                0x2000004c   Data           4  main.o(.data)
-    funNovoEstado                            0x20000050   Data           4  main.o(.data)
-    teclaConfirma                            0x20000054   Data           1  login_e_config.o(.data)
-    teclaBackSpace                           0x20000055   Data           1  login_e_config.o(.data)
-    semTeclaPressionada                      0x20000056   Data           1  login_e_config.o(.data)
-    __libspace_start                         0x20000058   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200000b8   Data           0  libspace.o(.bss)
+    ultTecla                                 0x20000018   Data           1  main.o(.data)
+    tempoUltMudancaTela                      0x2000001c   Data           4  main.o(.data)
+    subEstadoAnterior                        0x20000020   Data           4  main.o(.data)
+    subEstado                                0x20000024   Data           4  main.o(.data)
+    estadoLogin                              0x20000028   Data           4  main.o(.data)
+    loginUser                                0x2000002c   Data           7  main.o(.data)
+    loginPasswd                              0x20000033   Data           6  main.o(.data)
+    tempoAberto                              0x2000003c   Data           4  main.o(.data)
+    tempoFechado                             0x20000040   Data           4  main.o(.data)
+    flag1min                                 0x20000044   Data           4  main.o(.data)
+    tempoaberto1min                          0x20000048   Data           4  main.o(.data)
+    tempofechado1min                         0x2000004c   Data           4  main.o(.data)
+    funEstadoAnterior                        0x20000050   Data           4  main.o(.data)
+    funEstado                                0x20000054   Data           4  main.o(.data)
+    funNovoEstado                            0x20000058   Data           4  main.o(.data)
+    teclaConfirma                            0x2000005c   Data           1  login_e_config.o(.data)
+    teclaBackSpace                           0x2000005d   Data           1  login_e_config.o(.data)
+    semTeclaPressionada                      0x2000005e   Data           1  login_e_config.o(.data)
+    usuarioLogando                           0x20000060   Data           4  estados.o(.data)
+    produzidosUltimoAbastecimento            0x20000064   Data           4  estados.o(.data)
+    serie                                    0x20000068   Data          40  lcd.o(.bss)
+    __libspace_start                         0x20000090   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200000f0   Data           0  libspace.o(.bss)
 
 
 
@@ -1036,171 +1096,181 @@ Memory Map of the image
 
   Image Entry point : 0x0800018d
 
-  Load Region LR_1 (Base: 0x08000000, Size: 0x00002a8c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x08000000, Size: 0x0000310c, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00002a34, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000030a4, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000ec   Data   RO          624    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000008   Code   RO          708  * !!!main             c_w.l(__main.o)
-    0x080000f4   0x080000f4   0x00000034   Code   RO          934    !!!scatter          c_w.l(__scatter.o)
-    0x08000128   0x08000128   0x0000001a   Code   RO          936    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x08000000   0x08000000   0x000000ec   Data   RO          659    RESET               startup_stm32f10x_md.o
+    0x080000ec   0x080000ec   0x00000008   Code   RO          743  * !!!main             c_w.l(__main.o)
+    0x080000f4   0x080000f4   0x00000034   Code   RO          965    !!!scatter          c_w.l(__scatter.o)
+    0x08000128   0x08000128   0x0000001a   Code   RO          967    !!handler_copy      c_w.l(__scatter_copy.o)
     0x08000142   0x08000142   0x00000002   PAD
-    0x08000144   0x08000144   0x0000001c   Code   RO          938    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x08000160   0x08000160   0x00000002   Code   RO          857    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          770    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          772    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          775    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          777    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          779    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          782    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          784    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          786    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          788    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          790    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          792    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          794    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          796    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          798    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          800    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          802    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          806    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          808    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000000   Code   RO          810    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x08000162   0x08000162   0x00000004   Code   RO          811    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
-    0x08000166   0x08000166   0x00000000   Code   RO          812    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x08000166   0x08000166   0x00000002   Code   RO          813    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x08000168   0x08000168   0x00000002   Code   RO          895    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          901    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          903    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          906    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          909    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          911    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000000   Code   RO          914    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x0800016a   0x0800016a   0x00000002   Code   RO          915    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          768    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x0800016c   0x0800016c   0x00000000   Code   RO          826    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x0800016c   0x0800016c   0x00000006   Code   RO          838    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x08000172   0x08000172   0x00000000   Code   RO          828    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x08000172   0x08000172   0x00000004   Code   RO          829    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x08000176   0x08000176   0x00000000   Code   RO          831    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x08000176   0x08000176   0x00000008   Code   RO          832    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0800017e   0x0800017e   0x00000002   Code   RO          863    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x08000180   0x08000180   0x00000000   Code   RO          875    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x08000180   0x08000180   0x00000004   Code   RO          876    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x08000184   0x08000184   0x00000006   Code   RO          877    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x08000144   0x08000144   0x0000001c   Code   RO          969    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x08000160   0x08000160   0x00000002   Code   RO          888    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          801    .ARM.Collect$$libinit$$00000002  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          803    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          806    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          808    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          810    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          813    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          815    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          817    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          819    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          821    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          823    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          825    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          827    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          829    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          831    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          833    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          837    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          839    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000000   Code   RO          841    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x08000162   0x08000162   0x00000004   Code   RO          842    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
+    0x08000166   0x08000166   0x00000000   Code   RO          843    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x08000166   0x08000166   0x00000002   Code   RO          844    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x08000168   0x08000168   0x00000002   Code   RO          926    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          932    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          934    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          937    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          940    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          942    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000000   Code   RO          945    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x0800016a   0x0800016a   0x00000002   Code   RO          946    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          799    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x0800016c   0x0800016c   0x00000000   Code   RO          857    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x0800016c   0x0800016c   0x00000006   Code   RO          869    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x08000172   0x08000172   0x00000000   Code   RO          859    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x08000172   0x08000172   0x00000004   Code   RO          860    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x08000176   0x08000176   0x00000000   Code   RO          862    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x08000176   0x08000176   0x00000008   Code   RO          863    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0800017e   0x0800017e   0x00000002   Code   RO          894    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x08000180   0x08000180   0x00000000   Code   RO          906    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x08000180   0x08000180   0x00000004   Code   RO          907    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x08000184   0x08000184   0x00000006   Code   RO          908    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0800018a   0x0800018a   0x00000002   PAD
-    0x0800018c   0x0800018c   0x00000040   Code   RO          625  * .text               startup_stm32f10x_md.o
-    0x080001cc   0x080001cc   0x0000003e   Code   RO          700    .text               c_w.l(strlen.o)
-    0x0800020a   0x0800020a   0x00000064   Code   RO          702    .text               c_w.l(rt_memcpy_w.o)
+    0x0800018c   0x0800018c   0x00000040   Code   RO          660  * .text               startup_stm32f10x_md.o
+    0x080001cc   0x080001cc   0x0000003e   Code   RO          735    .text               c_w.l(strlen.o)
+    0x0800020a   0x0800020a   0x00000064   Code   RO          737    .text               c_w.l(rt_memcpy_w.o)
     0x0800026e   0x0800026e   0x00000002   PAD
-    0x08000270   0x08000270   0x00000080   Code   RO          704    .text               c_w.l(strcmpv7m.o)
-    0x080002f0   0x080002f0   0x00000006   Code   RO          706    .text               c_w.l(heapauxi.o)
+    0x08000270   0x08000270   0x00000080   Code   RO          739    .text               c_w.l(strcmpv7m.o)
+    0x080002f0   0x080002f0   0x00000006   Code   RO          741    .text               c_w.l(heapauxi.o)
     0x080002f6   0x080002f6   0x00000002   PAD
-    0x080002f8   0x080002f8   0x00000024   Code   RO          713    .text               c_w.l(init_aeabi.o)
-    0x0800031c   0x0800031c   0x0000004a   Code   RO          844    .text               c_w.l(sys_stackheap_outer.o)
-    0x08000366   0x08000366   0x00000012   Code   RO          846    .text               c_w.l(exit.o)
-    0x08000378   0x08000378   0x00000008   Code   RO          860    .text               c_w.l(libspace.o)
-    0x08000380   0x08000380   0x00000002   Code   RO          871    .text               c_w.l(use_no_semi.o)
-    0x08000382   0x08000382   0x00000000   Code   RO          873    .text               c_w.l(indicate_semi.o)
+    0x080002f8   0x080002f8   0x00000024   Code   RO          748    .text               c_w.l(init_aeabi.o)
+    0x0800031c   0x0800031c   0x0000004a   Code   RO          875    .text               c_w.l(sys_stackheap_outer.o)
+    0x08000366   0x08000366   0x00000012   Code   RO          877    .text               c_w.l(exit.o)
+    0x08000378   0x08000378   0x00000008   Code   RO          891    .text               c_w.l(libspace.o)
+    0x08000380   0x08000380   0x00000002   Code   RO          902    .text               c_w.l(use_no_semi.o)
+    0x08000382   0x08000382   0x00000000   Code   RO          904    .text               c_w.l(indicate_semi.o)
     0x08000382   0x08000382   0x00000002   PAD
-    0x08000384   0x08000384   0x0000000c   Code   RO          887    .text               c_w.l(sys_exit.o)
-    0x08000390   0x08000390   0x000000d8   Code   RO            4    i.ADC1_2_IRQHandler  main.o
-    0x08000468   0x08000468   0x00000008   Code   RO          632    i.SetSysClock       system_stm32f10x.o
-    0x08000470   0x08000470   0x000000e0   Code   RO          633    i.SetSysClockTo72   system_stm32f10x.o
-    0x08000550   0x08000550   0x00000060   Code   RO          635    i.SystemInit        system_stm32f10x.o
-    0x080005b0   0x080005b0   0x00000024   Code   RO          170    i._Z10lcdComandoc   lcd.o
-    0x080005d4   0x080005d4   0x00000040   Code   RO          348    i._Z11configA8MCOv  config_perifericos.o
-    0x08000614   0x08000614   0x00000124   Code   RO          477    i._Z11estConfirmav  estados.o
-    0x08000738   0x08000738   0x0000010c   Code   RO          478    i._Z11estProducaov  estados.o
-    0x08000844   0x08000844   0x00000076   Code   RO          272    i._Z11ij_to_char2ii  tecladomole.o
-    0x080008ba   0x080008ba   0x00000042   Code   RO          173    i._Z11lcdWritePosPKcjj  lcd.o
-    0x080008fc   0x080008fc   0x00000034   Code   RO          273    i._Z11le_teclado2v  tecladomole.o
-    0x08000930   0x08000930   0x0000013c   Code   RO          427    i._Z11pedeUsuariov  login_e_config.o
-    0x08000a6c   0x08000a6c   0x00000020   Code   RO          259    i._Z11pulseEnablev  lcd.o
-    0x08000a8c   0x08000a8c   0x0000003c   Code   RO            5    i._Z11trocaEstadoPFvvE  main.o
-    0x08000ac8   0x08000ac8   0x0000000e   Code   RO          174    i._Z12clearDisplayv  lcd.o
-    0x08000ad6   0x08000ad6   0x00000002   PAD
-    0x08000ad8   0x08000ad8   0x00000024   Code   RO          175    i._Z12lcdWritecharc  lcd.o
-    0x08000afc   0x08000afc   0x00000010   Code   RO          572    i._Z12statusPistaov  estados.o
-    0x08000b0c   0x08000b0c   0x00000088   Code   RO          480    i._Z13estEmergenciav  estados.o
-    0x08000b94   0x08000b94   0x0000004c   Code   RO          176    i._Z14atraso40us_lcdv  lcd.o
-    0x08000be0   0x08000be0   0x00000024   Code   RO          349    i._Z14configuraClockv  config_perifericos.o
-    0x08000c04   0x08000c04   0x00000010   Code   RO          578    i._Z14desativaPistaov  estados.o
-    0x08000c14   0x08000c14   0x00000050   Code   RO          177    i._Z15atraso1m65s_lcdv  lcd.o
-    0x08000c64   0x08000c64   0x0000002c   Code   RO          482    i._Z15estLoginInicialv  estados.o
-    0x08000c90   0x08000c90   0x0000029c   Code   RO          483    i._Z15loginFechamentov  estados.o
-    0x08000f2c   0x08000f2c   0x00000050   Code   RO          274    i._Z16atraso_debounce2v  tecladomole.o
-    0x08000f7c   0x08000f7c   0x000001b0   Code   RO          484    i._Z16estInicializacaov  estados.o
-    0x0800112c   0x0800112c   0x00000184   Code   RO          428    i._Z16selecionaProdutov  login_e_config.o
-    0x080012b0   0x080012b0   0x00000010   Code   RO          560    i._Z17reservatorioCheiov  estados.o
-    0x080012c0   0x080012c0   0x00000010   Code   RO          566    i._Z17reservatorioVaziov  estados.o
-    0x080012d0   0x080012d0   0x0000005c   Code   RO          275    i._Z25configura_portaB_teclado2v  tecladomole.o
-    0x0800132c   0x0800132c   0x0000001c   Code   RO          178    i._Z8lcdWritePKc    lcd.o
-    0x08001348   0x08001348   0x000000a4   Code   RO          405    i._Z8temp2strPcf    auxiliares.o
-    0x080013ec   0x080013ec   0x00000014   Code   RO          350    i._Z8tempoRTCv      config_perifericos.o
-    0x08001400   0x08001400   0x000000c4   Code   RO          351    i._Z9configADCv     config_perifericos.o
-    0x080014c4   0x080014c4   0x00000070   Code   RO          352    i._Z9configRTCv     config_perifericos.o
-    0x08001534   0x08001534   0x000000e0   Code   RO          276    i._Z9debounce2ii    tecladomole.o
-    0x08001614   0x08001614   0x0000007c   Code   RO          179    i._Z9lcdConfigv     lcd.o
-    0x08001690   0x08001690   0x00000158   Code   RO          430    i._Z9pedeSenhai     login_e_config.o
-    0x080017e8   0x080017e8   0x00000028   Code   RO          180    i._Z9setCursorjj    lcd.o
-    0x08001810   0x08001810   0x00000014   Code   RO          104    i._ZN3PWM12enableOutputEv  pwm_t1ch2_a9.o
-    0x08001824   0x08001824   0x0000007c   Code   RO          106    i._ZN3PWM12setDutyCycleEf  pwm_t1ch2_a9.o
-    0x080018a0   0x080018a0   0x00000068   Code   RO          111    i._ZN3PWMC1Ev       pwm_t1ch2_a9.o
-    0x08001908   0x08001908   0x00000010   Code   RO            6    i.__sti___8_main_cpp_ea587f0a  main.o
-    0x08001918   0x08001918   0x00000074   Code   RO            7    i.main              main.o
-    0x0800198c   0x0800198c   0x00000062   Code   RO          716    x$fpl$d2f           fz_ws.l(d2f.o)
-    0x080019ee   0x080019ee   0x00000002   PAD
-    0x080019f0   0x080019f0   0x00000150   Code   RO          718    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
-    0x08001b40   0x08001b40   0x00000018   Code   RO          814    x$fpl$dcmpinf       fz_ws.l(dcmpi.o)
-    0x08001b58   0x08001b58   0x000002b0   Code   RO          725    x$fpl$ddiv          fz_ws.l(ddiv.o)
-    0x08001e08   0x08001e08   0x0000005e   Code   RO          728    x$fpl$dfix          fz_ws.l(dfix.o)
-    0x08001e66   0x08001e66   0x0000002e   Code   RO          733    x$fpl$dflt          fz_ws.l(dflt_clz.o)
-    0x08001e94   0x08001e94   0x00000078   Code   RO          738    x$fpl$dleqf         fz_ws.l(dleqf.o)
-    0x08001f0c   0x08001f0c   0x00000154   Code   RO          740    x$fpl$dmul          fz_ws.l(dmul.o)
-    0x08002060   0x08002060   0x0000009c   Code   RO          816    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
-    0x080020fc   0x080020fc   0x0000000c   Code   RO          818    x$fpl$dretinf       fz_ws.l(dretinf.o)
-    0x08002108   0x08002108   0x0000006c   Code   RO          742    x$fpl$drleqf        fz_ws.l(drleqf.o)
-    0x08002174   0x08002174   0x000001d4   Code   RO          720    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
-    0x08002348   0x08002348   0x00000056   Code   RO          744    x$fpl$f2d           fz_ws.l(f2d.o)
-    0x0800239e   0x0800239e   0x00000002   PAD
-    0x080023a0   0x080023a0   0x000000c4   Code   RO          746    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
-    0x08002464   0x08002464   0x00000184   Code   RO          753    x$fpl$fdiv          fz_ws.l(fdiv.o)
-    0x080025e8   0x080025e8   0x00000036   Code   RO          756    x$fpl$ffix          fz_ws.l(ffix.o)
-    0x0800261e   0x0800261e   0x00000002   PAD
-    0x08002620   0x08002620   0x00000026   Code   RO          760    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
-    0x08002646   0x08002646   0x00000002   PAD
-    0x08002648   0x08002648   0x00000102   Code   RO          766    x$fpl$fmul          fz_ws.l(fmul.o)
-    0x0800274a   0x0800274a   0x0000008c   Code   RO          820    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
-    0x080027d6   0x080027d6   0x0000000a   Code   RO          822    x$fpl$fretinf       fz_ws.l(fretinf.o)
-    0x080027e0   0x080027e0   0x000000ea   Code   RO          748    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
-    0x080028ca   0x080028ca   0x00000000   Code   RO          824    x$fpl$usenofp       fz_ws.l(usenofp.o)
-    0x080028ca   0x080028ca   0x00000002   PAD
-    0x080028cc   0x080028cc   0x0000012c   Data   RO          435    .constdata          login_e_config.o
-    0x080029f8   0x080029f8   0x00000015   Data   RO          497    .constdata          estados.o
-    0x08002a0d   0x08002a0d   0x00000003   PAD
-    0x08002a10   0x08002a10   0x00000020   Data   RO          932    Region$$Table       anon$$obj.o
-    0x08002a30   0x08002a30   0x00000004   Data   RO           13    .init_array         main.o
-    0x08002a34   0x08002a30   0x00000000   Data   RO          711    .init_array         c_w.l(init_aeabi.o)
+    0x08000384   0x08000384   0x0000000c   Code   RO          918    .text               c_w.l(sys_exit.o)
+    0x08000390   0x08000390   0x00000158   Code   RO            4    i.ADC1_2_IRQHandler  main.o
+    0x080004e8   0x080004e8   0x00000008   Code   RO          667    i.SetSysClock       system_stm32f10x.o
+    0x080004f0   0x080004f0   0x000000e0   Code   RO          668    i.SetSysClockTo72   system_stm32f10x.o
+    0x080005d0   0x080005d0   0x00000060   Code   RO          670    i.SystemInit        system_stm32f10x.o
+    0x08000630   0x08000630   0x0000002c   Code   RO          180    i._Z10lcdComandoc   lcd.o
+    0x0800065c   0x0800065c   0x00000010   Code   RO          616    i._Z11ativaPistaov  estados.o
+    0x0800066c   0x0800066c   0x00000040   Code   RO          376    i._Z11configA8MCOv  config_perifericos.o
+    0x080006ac   0x080006ac   0x000000c0   Code   RO          377    i._Z11configGPIOsv  config_perifericos.o
+    0x0800076c   0x0800076c   0x00000118   Code   RO          512    i._Z11estConfirmav  estados.o
+    0x08000884   0x08000884   0x00000254   Code   RO          513    i._Z11estProducaov  estados.o
+    0x08000ad8   0x08000ad8   0x00000076   Code   RO          299    i._Z11ij_to_char2ii  tecladomole.o
+    0x08000b4e   0x08000b4e   0x0000004a   Code   RO          182    i._Z11lcdWriteIntii  lcd.o
+    0x08000b98   0x08000b98   0x00000042   Code   RO          183    i._Z11lcdWritePosPKcjj  lcd.o
+    0x08000bda   0x08000bda   0x00000034   Code   RO          300    i._Z11le_teclado2v  tecladomole.o
+    0x08000c0e   0x08000c0e   0x00000002   PAD
+    0x08000c10   0x08000c10   0x0000013c   Code   RO          462    i._Z11pedeUsuariov  login_e_config.o
+    0x08000d4c   0x08000d4c   0x00000020   Code   RO          286    i._Z11pulseEnablev  lcd.o
+    0x08000d6c   0x08000d6c   0x0000003c   Code   RO            5    i._Z11trocaEstadoPFvvE  main.o
+    0x08000da8   0x08000da8   0x0000000e   Code   RO          184    i._Z12clearDisplayv  lcd.o
+    0x08000db6   0x08000db6   0x00000002   PAD
+    0x08000db8   0x08000db8   0x000000f4   Code   RO          514    i._Z12estRelatoriov  estados.o
+    0x08000eac   0x08000eac   0x00000028   Code   RO          345    i._Z12fechaValvulav  comarduino.o
+    0x08000ed4   0x08000ed4   0x00000014   Code   RO          185    i._Z12lcdWriteTempii  lcd.o
+    0x08000ee8   0x08000ee8   0x00000178   Code   RO          186    i._Z12lcdWriteTempv  lcd.o
+    0x08001060   0x08001060   0x0000002c   Code   RO          187    i._Z12lcdWritecharc  lcd.o
+    0x0800108c   0x0800108c   0x00000010   Code   RO          610    i._Z12statusPistaov  estados.o
+    0x0800109c   0x0800109c   0x000000d8   Code   RO          515    i._Z13estEmergenciav  estados.o
+    0x08001174   0x08001174   0x00000104   Code   RO          516    i._Z13estFechamentov  estados.o
+    0x08001278   0x08001278   0x0000004c   Code   RO          188    i._Z14atraso40us_lcdv  lcd.o
+    0x080012c4   0x080012c4   0x00000024   Code   RO          378    i._Z14configuraClockv  config_perifericos.o
+    0x080012e8   0x080012e8   0x00000010   Code   RO          622    i._Z14desativaPistaov  estados.o
+    0x080012f8   0x080012f8   0x00000050   Code   RO          189    i._Z15atraso1m65s_lcdv  lcd.o
+    0x08001348   0x08001348   0x00000070   Code   RO          517    i._Z15estLoginInicialv  estados.o
+    0x080013b8   0x080013b8   0x0000037c   Code   RO          518    i._Z15loginFechamentov  estados.o
+    0x08001734   0x08001734   0x00000050   Code   RO          301    i._Z16atraso_debounce2v  tecladomole.o
+    0x08001784   0x08001784   0x0000015c   Code   RO          519    i._Z16estInicializacaov  estados.o
+    0x080018e0   0x080018e0   0x00000114   Code   RO          520    i._Z16estTrocaProducaov  estados.o
+    0x080019f4   0x080019f4   0x00000184   Code   RO          463    i._Z16selecionaProdutov  login_e_config.o
+    0x08001b78   0x08001b78   0x00000010   Code   RO          598    i._Z17reservatorioCheiov  estados.o
+    0x08001b88   0x08001b88   0x00000010   Code   RO          604    i._Z17reservatorioVaziov  estados.o
+    0x08001b98   0x08001b98   0x0000003c   Code   RO          521    i._Z18refreshQTDeTempLCDv  estados.o
+    0x08001bd4   0x08001bd4   0x00000014   Code   RO          379    i._Z8tempoRTCv      config_perifericos.o
+    0x08001be8   0x08001be8   0x000000c4   Code   RO          380    i._Z9configADCv     config_perifericos.o
+    0x08001cac   0x08001cac   0x00000070   Code   RO          381    i._Z9configRTCv     config_perifericos.o
+    0x08001d1c   0x08001d1c   0x000000e0   Code   RO          302    i._Z9debounce2ii    tecladomole.o
+    0x08001dfc   0x08001dfc   0x00000024   Code   RO          191    i._Z9lcdConfigv     lcd.o
+    0x08001e20   0x08001e20   0x00000158   Code   RO          465    i._Z9pedeSenhai     login_e_config.o
+    0x08001f78   0x08001f78   0x00000028   Code   RO          192    i._Z9setCursorjj    lcd.o
+    0x08001fa0   0x08001fa0   0x00000014   Code   RO          114    i._ZN3PWM12enableOutputEv  pwm_t1ch2_a9.o
+    0x08001fb4   0x08001fb4   0x0000007c   Code   RO          116    i._ZN3PWM12setDutyCycleEf  pwm_t1ch2_a9.o
+    0x08002030   0x08002030   0x00000068   Code   RO          121    i._ZN3PWMC1Ev       pwm_t1ch2_a9.o
+    0x08002098   0x08002098   0x00000010   Code   RO            6    i.__sti___8_main_cpp_ea587f0a  main.o
+    0x080020a8   0x080020a8   0x000000d8   Code   RO            7    i.main              main.o
+    0x08002180   0x08002180   0x00000062   Code   RO          751    x$fpl$d2f           fz_ws.l(d2f.o)
+    0x080021e2   0x080021e2   0x00000002   PAD
+    0x080021e4   0x080021e4   0x00000150   Code   RO          753    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
+    0x08002334   0x08002334   0x00000018   Code   RO          845    x$fpl$dcmpinf       fz_ws.l(dcmpi.o)
+    0x0800234c   0x0800234c   0x000002b0   Code   RO          760    x$fpl$ddiv          fz_ws.l(ddiv.o)
+    0x080025fc   0x080025fc   0x0000005e   Code   RO          763    x$fpl$dfix          fz_ws.l(dfix.o)
+    0x0800265a   0x0800265a   0x0000002e   Code   RO          768    x$fpl$dflt          fz_ws.l(dflt_clz.o)
+    0x08002688   0x08002688   0x00000078   Code   RO          773    x$fpl$dleqf         fz_ws.l(dleqf.o)
+    0x08002700   0x08002700   0x00000154   Code   RO          775    x$fpl$dmul          fz_ws.l(dmul.o)
+    0x08002854   0x08002854   0x0000009c   Code   RO          847    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
+    0x080028f0   0x080028f0   0x0000000c   Code   RO          849    x$fpl$dretinf       fz_ws.l(dretinf.o)
+    0x080028fc   0x080028fc   0x0000006c   Code   RO          777    x$fpl$drleqf        fz_ws.l(drleqf.o)
+    0x08002968   0x08002968   0x000001d4   Code   RO          755    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
+    0x08002b3c   0x08002b3c   0x00000056   Code   RO          779    x$fpl$f2d           fz_ws.l(f2d.o)
+    0x08002b92   0x08002b92   0x00000002   PAD
+    0x08002b94   0x08002b94   0x000000c4   Code   RO          781    x$fpl$fadd          fz_ws.l(faddsub_clz.o)
+    0x08002c58   0x08002c58   0x00000036   Code   RO          787    x$fpl$ffix          fz_ws.l(ffix.o)
+    0x08002c8e   0x08002c8e   0x00000002   PAD
+    0x08002c90   0x08002c90   0x00000026   Code   RO          791    x$fpl$ffltu         fz_ws.l(fflt_clz.o)
+    0x08002cb6   0x08002cb6   0x00000002   PAD
+    0x08002cb8   0x08002cb8   0x00000102   Code   RO          797    x$fpl$fmul          fz_ws.l(fmul.o)
+    0x08002dba   0x08002dba   0x0000008c   Code   RO          851    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x08002e46   0x08002e46   0x0000000a   Code   RO          853    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x08002e50   0x08002e50   0x000000ea   Code   RO          783    x$fpl$fsub          fz_ws.l(faddsub_clz.o)
+    0x08002f3a   0x08002f3a   0x00000000   Code   RO          855    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x08002f3a   0x08002f3a   0x00000002   PAD
+    0x08002f3c   0x08002f3c   0x0000012c   Data   RO          470    .constdata          login_e_config.o
+    0x08003068   0x08003068   0x00000015   Data   RO          532    .constdata          estados.o
+    0x0800307d   0x0800307d   0x00000003   PAD
+    0x08003080   0x08003080   0x00000020   Data   RO          963    Region$$Table       anon$$obj.o
+    0x080030a0   0x080030a0   0x00000004   Data   RO           13    .init_array         main.o
+    0x080030a4   0x080030a0   0x00000000   Data   RO          746    .init_array         c_w.l(init_aeabi.o)
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08002a34, Size: 0x00000058, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x080030a4, Size: 0x00000068, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08002a34   0x00000054   Data   RW           12    .data               main.o
-    0x20000054   0x08002a88   0x00000003   Data   RW          436    .data               login_e_config.o
+    0x20000000   0x080030a4   0x0000005c   Data   RW           12    .data               main.o
+    0x2000005c   0x08003100   0x00000003   Data   RW          471    .data               login_e_config.o
+    0x2000005f   0x08003103   0x00000001   PAD
+    0x20000060   0x08003104   0x00000008   Data   RW          533    .data               estados.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000058, Load base: 0x08002a8c, Size: 0x00000660, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000068, Load base: 0x0800310c, Size: 0x00000688, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000058        -       0x00000060   Zero   RW          861    .bss                c_w.l(libspace.o)
-    0x200000b8        -       0x00000200   Zero   RW          623    HEAP                startup_stm32f10x_md.o
-    0x200002b8        -       0x00000400   Zero   RW          622    STACK               startup_stm32f10x_md.o
+    0x20000068        -       0x00000028   Zero   RW          206    .bss                lcd.o
+    0x20000090        -       0x00000060   Zero   RW          892    .bss                c_w.l(libspace.o)
+    0x200000f0        -       0x00000200   Zero   RW          658    HEAP                startup_stm32f10x_md.o
+    0x200002f0        -       0x00000400   Zero   RW          657    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -1210,21 +1280,21 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       164         18          0          0          0        555   auxiliares.o
-       428         48          0          0          0       2178   config_perifericos.o
-      1904        432         21          0          0       8461   estados.o
-       532         56          0          0          0       4725   lcd.o
-      1048        124        300          3          0       3132   login_e_config.o
-       408         84          4         84          0       6713   main.o
-       248         28          0          0          0       1344   pwm_t1ch2_a9.o
+        40          8          0          0          0        427   comarduino.o
+       620         82          0          0          0       2660   config_perifericos.o
+      3364        788         21          8          0      10526   estados.o
+       902         66          0          0         40       6638   lcd.o
+      1048        124        300          3          0       3144   login_e_config.o
+       636        146          4         92          0       7261   main.o
+       248         28          0          0          0       1356   pwm_t1ch2_a9.o
         64         26        236          0       1536        812   startup_stm32f10x_md.o
-       328         28          0          0          0       6605   system_stm32f10x.o
-       566         28          0          0          0       2903   tecladomole.o
+       328         28          0          0          0       6609   system_stm32f10x.o
+       474         12          0          0          0       2487   tecladomole.o
 
     ----------------------------------------------------------------------
-      5692        872        596         88       1536      37428   Object Totals
+      7728       1308        596        104       1576      41920   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         2          0          3          1          0          0   (incl. Padding)
+         4          0          3          1          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1267,7 +1337,6 @@ Image component sizes
        108          0          0          0          0         80   drleqf.o
         86          4          0          0          0         84   f2d.o
        430          8          0          0          0        168   faddsub_clz.o
-       388         76          0          0          0         96   fdiv.o
         54          4          0          0          0         84   ffix.o
         38          0          0          0          0         68   fflt_clz.o
        258          4          0          0          0         84   fmul.o
@@ -1276,7 +1345,7 @@ Image component sizes
          0          0          0          0          0          0   usenofp.o
 
     ----------------------------------------------------------------------
-      4516        310          0          0         96       2860   Library Totals
+      4128        234          0          0         96       2764   Library Totals
         20          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
@@ -1284,10 +1353,10 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
        602         26          0          0         96        888   c_w.l
-      3894        284          0          0          0       1972   fz_ws.l
+      3506        208          0          0          0       1876   fz_ws.l
 
     ----------------------------------------------------------------------
-      4516        310          0          0         96       2860   Library Totals
+      4128        234          0          0         96       2764   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1296,15 +1365,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     10208       1182        596         88       1632      36696   Grand Totals
-     10208       1182        596         88       1632      36696   ELF Image Totals
-     10208       1182        596         88          0          0   ROM Totals
+     11856       1542        596        104       1672      40780   Grand Totals
+     11856       1542        596        104       1672      40780   ELF Image Totals
+     11856       1542        596        104          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                10804 (  10.55kB)
-    Total RW  Size (RW Data + ZI Data)              1720 (   1.68kB)
-    Total ROM Size (Code + RO Data + RW Data)      10892 (  10.64kB)
+    Total RO  Size (Code + RO Data)                12452 (  12.16kB)
+    Total RW  Size (RW Data + ZI Data)              1776 (   1.73kB)
+    Total ROM Size (Code + RO Data + RW Data)      12556 (  12.26kB)
 
 ==============================================================================
 
